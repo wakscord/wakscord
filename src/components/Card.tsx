@@ -22,6 +22,8 @@ import {
   CalendarIcon,
 } from "@chakra-ui/icons";
 
+import "../css/Card.css";
+
 import Chat from "./Chat";
 import { API_BASE_URL, ITEMS } from "../constants";
 import { IChat } from "../types";
@@ -191,7 +193,14 @@ export default function Card({
             </Stack>
           </Box>
 
-          <Box marginTop={5} borderWidth="3px" height="xs" overflow="scroll">
+          <Box
+            className="chatBox"
+            padding={2}
+            marginTop={5}
+            borderWidth="3px"
+            height="xs"
+            overflowY="scroll"
+          >
             {chats.map((chat: IChat) => (
               <Chat chat={chat} />
             ))}
