@@ -38,7 +38,7 @@ interface ICardProp {
   info: any;
   watch: any;
   wakzoo: Date;
-  bangon: any;
+  bangon?: any;
 }
 
 function timeFormat(value: any, wakzoo: boolean = false) {
@@ -91,7 +91,7 @@ export default function Card({
   const [open, setOpen] = useState<boolean>(false);
   const [chats, setChats] = useState<Array<IChat>>([]);
 
-  if (!info || !watch || !bangon) {
+  if (!info || !watch) {
     return null;
   }
 
@@ -153,8 +153,7 @@ export default function Card({
           <Text color="blackAlpha.700">{info.title}</Text>
 
           {info.live && <Text color="blackAlpha.700">{info.game}</Text>}
-
-          {!info.live && <Bangon data={bangon} />}
+          {!info.live && bangon && <Bangon data={bangon} />}
         </Box>
 
         <Flex marginLeft="auto" flexDirection="column" alignItems="center">
@@ -211,7 +210,7 @@ export default function Card({
 
       <Collapse in={open} unmountOnExit={true}>
         <Box marginTop={5}>
-          <Divider borderBottomWidth={3} />
+          <Divider borderBottomWidth={3} borderColor="blackAlpha.600" />
           {info.live && (
             <Box marginTop={5}>
               <iframe
@@ -225,7 +224,13 @@ export default function Card({
               />
             </Box>
           )}
-          {info.live && <Divider marginTop={3} borderBottomWidth={3} />}
+          {info.live && (
+            <Divider
+              marginTop={5}
+              borderBottomWidth={3}
+              borderColor="blackAlpha.600"
+            />
+          )}
 
           {watch.see.length > 0 && (
             <Box marginTop={5}>
