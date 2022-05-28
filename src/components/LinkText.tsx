@@ -1,5 +1,3 @@
-import { Text } from "@chakra-ui/react";
-
 const regexMdLinks = /\[([^[]+)\](\(.*\))/gm;
 const singleMatch = /\[([^[\]]*)\]\((.*?)\)/;
 

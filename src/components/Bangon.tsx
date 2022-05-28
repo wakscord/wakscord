@@ -34,8 +34,8 @@ export default function Bangon({ data: { status, info } }: IBangonProp) {
       <PopoverContent>
         <PopoverArrow />
         <PopoverBody>
-          {info.map((item: string) => (
-            <LinkText text={item} />
+          {info.map((item: string, idx: number) => (
+            <LinkText text={item} key={idx} />
           ))}
         </PopoverBody>
       </PopoverContent>

@@ -27,11 +27,10 @@ import {
 import "../css/Card.css";
 
 import Chat from "./Chat";
-import LinkText from "./LinkText";
+import Bangon from "./Bangon";
 
 import { API_BASE_URL, ITEMS } from "../constants";
 import { IChat } from "../types";
-import Bangon from "./Bangon";
 
 interface ICardProp {
   name: string;
@@ -155,22 +154,7 @@ export default function Card({
 
           {info.live && <Text color="blackAlpha.700">{info.game}</Text>}
 
-          {!info.live && (
-            // <Tooltip
-            //   hasArrow
-            //   label={bangon.info.map((x: string) => (
-            //     <LinkText text={x} />
-            //   ))}
-            //   bg="gray.300"
-            //   color="black"
-            // >
-            //   <Text color="blackAlpha.700" as="span">
-            //     {bangon.status}
-            //   </Text>
-            // </Tooltip>
-
-            <Bangon data={bangon} />
-          )}
+          {!info.live && <Bangon data={bangon} />}
         </Box>
 
         <Flex marginLeft="auto" flexDirection="column" alignItems="center">
@@ -273,8 +257,8 @@ export default function Card({
             overflowY="scroll"
             bg="white"
           >
-            {chats.map((chat: IChat) => (
-              <Chat chat={chat} />
+            {chats.map((chat: IChat, idx: number) => (
+              <Chat chat={chat} key={idx} />
             ))}
           </Box>
         </Box>
