@@ -130,7 +130,7 @@ export default function Card({
           href={`https://twitch.tv/${id}`}
         >
           {info.live && (
-            <Tooltip hasArrow label="방송 중" bg="gray.300" color="black">
+            <Tooltip hasArrow label="방송 중">
               <AvatarBadge boxSize="1em" bg="green.500" border="null" />
             </Tooltip>
           )}
@@ -162,13 +162,13 @@ export default function Card({
             <>
               <Flex alignItems="center" marginLeft="auto">
                 <Text fontSize="xl">{info.viewers.toLocaleString()}</Text>
-                <Tooltip hasArrow label="시청자" bg="gray.300" color="black">
+                <Tooltip hasArrow label="시청자">
                   <ViewIcon h={6} w={6} marginLeft={1} />
                 </Tooltip>
               </Flex>
               <Flex alignItems="center" marginLeft="auto">
                 <Text fontSize="xl">{uptimeFormat(info.started_at)}</Text>
-                <Tooltip hasArrow label="업타임" bg="gray.300" color="black">
+                <Tooltip hasArrow label="업타임">
                   <TimeIcon h={6} w={6} marginLeft={1} />
                 </Tooltip>
               </Flex>
@@ -180,7 +180,7 @@ export default function Card({
               <Text fontSize="xl">
                 {timeFormat(info.live_updated_at * 1000)}
               </Text>
-              <Tooltip hasArrow label="최근 방송" bg="gray.300" color="black">
+              <Tooltip hasArrow label="최근 방송">
                 <CalendarIcon h={6} w={6} marginLeft={1} />
               </Tooltip>
             </Flex>
@@ -190,19 +190,14 @@ export default function Card({
             <Text fontSize="xl">
               {timeFormat(info.title_updated_at * 1000)}
             </Text>
-            <Tooltip
-              hasArrow
-              label="방송 제목 변경"
-              bg="gray.300"
-              color="black"
-            >
+            <Tooltip hasArrow label="방송 제목 변경">
               <EditIcon h={6} w={6} marginLeft={1} />
             </Tooltip>
           </Flex>
 
           <Flex alignItems="center" marginLeft="auto">
             <Text fontSize="xl">{timeFormat(wakzoo, true)}</Text>
-            <Tooltip hasArrow label="왁물원 접속" bg="gray.300" color="black">
+            <Tooltip hasArrow label="왁물원 접속">
               <Image
                 h={6}
                 w={6}

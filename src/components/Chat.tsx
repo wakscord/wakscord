@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Tooltip } from "@chakra-ui/react";
 
 import Emote from "./Emote";
 import { IChat } from "../types";
@@ -24,7 +24,7 @@ export default function Chat({
 
   let index = 0;
   let words = "";
-  content.split(" ").forEach((word) => {
+  content.split(" ").forEach((word: string) => {
     const start = index;
     const end = index + word.length - 1;
     const idx = `${start}-${end}`;
@@ -58,6 +58,11 @@ export default function Chat({
 
   return (
     <Box>
+      <Tooltip hasArrow label={time}>
+        <Text as="span" verticalAlign="middle" fontSize=".8rem" color="gray">
+          {time.split(" ")[1].substring(0, 5)}{" "}
+        </Text>
+      </Tooltip>
       <Text
         as="span"
         verticalAlign="middle"
