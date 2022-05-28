@@ -4,13 +4,14 @@ import {
   Box,
   Avatar,
   AvatarBadge,
+  AvatarGroup,
   Flex,
   Heading,
   Text,
   Divider,
   Collapse,
-  Stack,
   Image,
+  Tooltip,
 } from "@chakra-ui/react";
 
 import {
@@ -20,13 +21,17 @@ import {
   ViewIcon,
   TimeIcon,
   CalendarIcon,
+  EditIcon,
 } from "@chakra-ui/icons";
 
 import "../css/Card.css";
 
 import Chat from "./Chat";
+import LinkText from "./LinkText";
+
 import { API_BASE_URL, ITEMS } from "../constants";
 import { IChat } from "../types";
+import Bangon from "./Bangon";
 
 interface ICardProp {
   name: string;
@@ -34,6 +39,7 @@ interface ICardProp {
   info: any;
   watch: any;
   wakzoo: Date;
+  bangon: any;
 }
 
 function timeFormat(value: any, wakzoo: boolean = false) {
@@ -70,17 +76,23 @@ function uptimeFormat(value: any) {
   return compare.toTimeString().split(" ")[0];
 }
 
+function addAlpha(color: string, opacity: number) {
+  var _opacity = Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255);
+  return color + _opacity.toString(16).toUpperCase();
+}
+
 export default function Card({
   name,
   info,
   watch,
   wakzoo,
+  bangon,
   data: { id, color },
 }: ICardProp) {
   const [open, setOpen] = useState<boolean>(false);
   const [chats, setChats] = useState<Array<IChat>>([]);
 
-  if (!info || !watch) {
+  if (!info || !watch || !bangon) {
     return null;
   }
 
@@ -105,40 +117,78 @@ export default function Card({
       padding="1rem"
       paddingBottom={2}
       marginBottom="10"
+      bg={addAlpha(color, 0.4)}
     >
       <Flex alignItems="center">
         <Avatar
           src={`${API_BASE_URL}/avatar?u=${id}`}
           size="2xl"
-          bg="white"
+          bg="transparent"
           showBorder={true}
           borderWidth="5px"
           borderColor={info.live ? color : "#808080"}
+          as="a"
+          href={`https://twitch.tv/${id}`}
         >
-          {info.live && <AvatarBadge boxSize="1.25em" bg="green.500" />}
+          {info.live && (
+            <Tooltip hasArrow label="방송 중" bg="gray.300" color="black">
+              <AvatarBadge boxSize="1em" bg="green.500" border="null" />
+            </Tooltip>
+          )}
+
           {!info.live && watch.in && (
-            <AvatarBadge boxSize="1.25em" bg="blue.500" />
+            <Tooltip
+              hasArrow
+              label="채팅방에 접속 중"
+              bg="gray.300"
+              color="black"
+            >
+              <AvatarBadge boxSize="1em" bg="blue.500" border="null" />
+            </Tooltip>
           )}
         </Avatar>
         <Box marginLeft={5}>
-          <Heading>{name}</Heading>
-          <Text>{info.title}</Text>
-          <Text>{info.game}</Text>
+          <Heading as="a" href={`https://twitch.tv/${id}`}>
+            {name}
+          </Heading>
+          <Text color="blackAlpha.700">{info.title}</Text>
+
+          {info.live && <Text color="blackAlpha.700">{info.game}</Text>}
+
+          {!info.live && (
+            // <Tooltip
+            //   hasArrow
+            //   label={bangon.info.map((x: string) => (
+            //     <LinkText text={x} />
+            //   ))}
+            //   bg="gray.300"
+            //   color="black"
+            // >
+            //   <Text color="blackAlpha.700" as="span">
+            //     {bangon.status}
+            //   </Text>
+            // </Tooltip>
+
+            <Bangon data={bangon} />
+          )}
         </Box>
 
         <Flex marginLeft="auto" flexDirection="column" alignItems="center">
           {info.live && (
-            <Flex alignItems="center" marginLeft="auto">
-              <Text fontSize="xl">{info.viewers.toLocaleString()}</Text>
-              <ViewIcon h={6} w={6} marginLeft={1} />
-            </Flex>
-          )}
-
-          {info.live && (
-            <Flex alignItems="center" marginLeft="auto">
-              <Text fontSize="xl">{uptimeFormat(info.started_at)}</Text>
-              <TimeIcon h={6} w={6} marginLeft={1} />
-            </Flex>
+            <>
+              <Flex alignItems="center" marginLeft="auto">
+                <Text fontSize="xl">{info.viewers.toLocaleString()}</Text>
+                <Tooltip hasArrow label="시청자" bg="gray.300" color="black">
+                  <ViewIcon h={6} w={6} marginLeft={1} />
+                </Tooltip>
+              </Flex>
+              <Flex alignItems="center" marginLeft="auto">
+                <Text fontSize="xl">{uptimeFormat(info.started_at)}</Text>
+                <Tooltip hasArrow label="업타임" bg="gray.300" color="black">
+                  <TimeIcon h={6} w={6} marginLeft={1} />
+                </Tooltip>
+              </Flex>
+            </>
           )}
 
           {!info.live && (
@@ -146,18 +196,36 @@ export default function Card({
               <Text fontSize="xl">
                 {timeFormat(info.live_updated_at * 1000)}
               </Text>
-              <CalendarIcon h={6} w={6} marginLeft={1} />
+              <Tooltip hasArrow label="최근 방송" bg="gray.300" color="black">
+                <CalendarIcon h={6} w={6} marginLeft={1} />
+              </Tooltip>
             </Flex>
           )}
 
           <Flex alignItems="center" marginLeft="auto">
+            <Text fontSize="xl">
+              {timeFormat(info.title_updated_at * 1000)}
+            </Text>
+            <Tooltip
+              hasArrow
+              label="방송 제목 변경"
+              bg="gray.300"
+              color="black"
+            >
+              <EditIcon h={6} w={6} marginLeft={1} />
+            </Tooltip>
+          </Flex>
+
+          <Flex alignItems="center" marginLeft="auto">
             <Text fontSize="xl">{timeFormat(wakzoo, true)}</Text>
-            <Image
-              h={6}
-              w={6}
-              marginLeft={1}
-              src={require("../assets/cafe.png")}
-            />
+            <Tooltip hasArrow label="왁물원 접속" bg="gray.300" color="black">
+              <Image
+                h={6}
+                w={6}
+                marginLeft={1}
+                src={require("../assets/cafe.png")}
+              />
+            </Tooltip>
           </Flex>
         </Flex>
       </Flex>
@@ -165,7 +233,6 @@ export default function Card({
       <Collapse in={open} unmountOnExit={true}>
         <Box marginTop={5}>
           <Divider borderBottomWidth={3} />
-
           {info.live && (
             <Box marginTop={5}>
               <iframe
@@ -179,20 +246,24 @@ export default function Card({
               />
             </Box>
           )}
+          {info.live && <Divider marginTop={3} borderBottomWidth={3} />}
 
-          <Box>
-            <Heading>시청 중</Heading>
-            <Stack spacing={2} direction="row">
-              {watch.see.map((user: string) => (
-                <Avatar
-                  size="lg"
-                  bg="white"
-                  src={`${API_BASE_URL}/avatar?u=${ITEMS[user].id}`}
-                />
-              ))}
-            </Stack>
-          </Box>
-
+          {watch.see.length > 0 && (
+            <Box marginTop={5}>
+              <Text fontSize="1.25rem" fontWeight="bold">
+                시청 중
+              </Text>
+              <AvatarGroup>
+                {watch.see.map((user: string) => (
+                  <Avatar
+                    size="lg"
+                    bg="white"
+                    src={`${API_BASE_URL}/avatar?u=${ITEMS[user].id}`}
+                  />
+                ))}
+              </AvatarGroup>
+            </Box>
+          )}
           <Box
             className="chatBox"
             padding={2}
@@ -200,6 +271,7 @@ export default function Card({
             borderWidth="3px"
             height="xs"
             overflowY="scroll"
+            bg="white"
           >
             {chats.map((chat: IChat) => (
               <Chat chat={chat} />
