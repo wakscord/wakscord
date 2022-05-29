@@ -279,7 +279,7 @@ export default function Card({
             <Box marginTop={5}>
               <iframe
                 title="Twitch"
-                src={`https://player.twitch.tv/?channel=${id}&parent=localhost&autoplay=false`}
+                src={`https://player.twitch.tv/?channel=${id}&parent=isedol-cctv.xyz&autoplay=false`}
                 frameBorder={0}
                 allowFullScreen={true}
                 scrolling="no"
