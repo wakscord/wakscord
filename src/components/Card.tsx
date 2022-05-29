@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   Box,
@@ -90,10 +90,13 @@ export default function Card({
 }: ICardProp) {
   const [open, setOpen] = useState<boolean>(false);
   const [chats, setChats] = useState<Array<IChat>>([]);
+  const [loaded, setLoaded] = useState<boolean>(false);
 
-  if (!info || !watch) {
-    return null;
-  }
+  useEffect(() => {
+    if (info && wakzoo && bangon) {
+      setLoaded(true);
+    }
+  }, [info, wakzoo, bangon]);
 
   const onOpen = () => {
     if (!open && !chats.length) {
@@ -107,6 +110,37 @@ export default function Card({
 
     setOpen(!open);
   };
+
+  if (!loaded) {
+    return (
+      <Box
+        maxW="3xl"
+        borderWidth="3px"
+        borderRadius="10px"
+        padding="1rem"
+        paddingBottom={2}
+        marginBottom="10"
+        bg={addAlpha(color, 0.4)}
+      >
+        <Avatar
+          src={`${API_BASE_URL}/avatar?u=${id}`}
+          size="2xl"
+          bg="transparent"
+          showBorder={true}
+          borderWidth="5px"
+          borderColor="#808080"
+          as="a"
+          href={`https://twitch.tv/${id}`}
+        />
+
+        <Box marginLeft={5}>
+          <Heading as="a" href={`https://twitch.tv/${id}`}>
+            {name}
+          </Heading>
+        </Box>
+      </Box>
+    );
+  }
 
   return (
     <Box
