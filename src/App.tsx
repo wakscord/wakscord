@@ -1,38 +1,34 @@
-import {
-  Box,
-  Heading,
-  Button,
-  Flex,
-  useDisclosure,
-  Skeleton,
-} from "@chakra-ui/react";
+import { Box, Heading, Button, Flex, useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import "./css/App.css";
 
 import Card from "./components/Card";
 import DiscordModal from "./components/DiscordModal";
 import { API_BASE_URL, ITEMS } from "./constants";
+import { Data } from "./types";
 
 export default function App() {
-  const [info, setInfo] = useState<any>({});
-  const [watch, setWatch] = useState<any>({});
-  const [wakzoo, setWakzoo] = useState<any>({});
-  const [bangon, setBangon] = useState<any>({ members: {} });
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const [data, setData] = useState<Data>({
+    info: {},
+    wakzoo: {},
+    bangon: {
+      info: {
+        date: "",
+        comment: [],
+      },
+      members: {},
+    },
+    watch: {},
+  });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     (async () => {
       const res = await fetch(API_BASE_URL + "/data");
-      const data = await res.json();
+      const json = await res.json();
 
-      setInfo(data.info);
-      setWatch(data.watch);
-      setWakzoo(data.wakzoo);
-      setBangon(data.bangon);
-
-      setLoaded(true);
+      setData(json);
     })();
   }, []);
 
@@ -54,10 +50,10 @@ export default function App() {
             key={index}
             name={item[0]}
             data={item[1]}
-            info={info[item[0]]}
-            watch={watch[item[0]]}
-            wakzoo={new Date(wakzoo[item[0]] * 1000)}
-            bangon={bangon.members[item[0]]}
+            info={data.info[item[0]]}
+            watch={data.watch[item[0]]}
+            wakzoo={new Date(data.wakzoo[item[0]] * 1000)}
+            bangon={data.bangon.members[item[0]]}
           />
         ))}
       </div>

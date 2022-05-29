@@ -32,15 +32,15 @@ import Chat from "./Chat";
 import Bangon from "./Bangon";
 
 import { API_BASE_URL, ITEMS } from "../constants";
-import { IChat } from "../types";
+import { IUserData, IInfo, IWatchMember, IBangonMember, IChat } from "../types";
 
 interface ICardProp {
   name: string;
-  data: any;
-  info: any;
-  watch: any;
+  data: IUserData;
+  info: IInfo;
+  watch: IWatchMember;
   wakzoo: Date;
-  bangon?: any;
+  bangon: IBangonMember;
 }
 
 function timeFormat(value: any, wakzoo: boolean = false) {

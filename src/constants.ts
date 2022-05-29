@@ -1,5 +1,7 @@
+import { IUserData } from "./types";
+
 type stringIndex = {
-  [index: string]: any;
+  [index: string]: IUserData;
 };
 
 export const API_BASE_URL = "https://api.isedol-cctv.xyz";
