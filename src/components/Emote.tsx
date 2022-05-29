@@ -7,7 +7,7 @@ interface IEmoteProp {
 
 export default function Emote({ id, name }: IEmoteProp) {
   return (
-    <Tooltip hasArrow label={name} bg="gray.300" color="black">
+    <Tooltip hasArrow label={name} bg="black">
       <Image
         src={`https://static-cdn.jtvnw.net/emoticons/v2/${id}/default/light/3.0`}
         w={30}
