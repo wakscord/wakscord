@@ -33,14 +33,19 @@ export default function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ backgroundColor: "#EDEDED", padding: "3rem" }}
+    >
       <div className="content">
         <Box margin={10}>
           <Heading as="h1" size="4xl" textAlign="center">
             이세돌 CCTV
           </Heading>
           <Flex justifyContent="center" marginTop={5}>
-            <Button onClick={onOpen}>디스코드로 알림 받아보기</Button>
+            <Button onClick={onOpen} colorScheme="blue">
+              디스코드로 알림 받아보기
+            </Button>
             <DiscordModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
           </Flex>
         </Box>

@@ -59,7 +59,7 @@ export default function Chat({
   return (
     <Box>
       <Tooltip hasArrow label={time}>
-        <Text as="span" verticalAlign="middle" fontSize=".8rem" color="gray">
+        <Text as="span" verticalAlign="middle" fontSize=".8rem" color="#4C4C4C">
           {time.split(" ")[1].substring(0, 5)}{" "}
         </Text>
       </Tooltip>

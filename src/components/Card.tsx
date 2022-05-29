@@ -175,12 +175,12 @@ export default function Card({
   return (
     <Box
       maxW="3xl"
-      borderWidth="3px"
       borderRadius="10px"
       padding="1rem"
       paddingBottom={2}
       marginBottom="10"
-      bg={addAlpha(color, 0.4)}
+      bg={addAlpha(color, 0.3)}
+      boxShadow="2px 2px 10px 5px rgb(0 0 0 / 20%);"
     >
       <Flex alignItems="center">
         <Avatar
@@ -321,7 +321,8 @@ export default function Card({
             borderWidth="3px"
             height="xs"
             overflowY="scroll"
-            bg="white"
+            bg="rgba(255 255 255 / 20%)"
+            borderRadius="10px"
           >
             {chats && (
               <Flex justifyContent="center" margin={5} ref={ref}>
