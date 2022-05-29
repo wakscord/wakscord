@@ -3,6 +3,7 @@ export interface IEmotes {
 }
 
 export interface IChat {
+  id: number;
   author: string;
   content: string;
   emotes?: IEmotes;

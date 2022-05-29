@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 
 import {
   Box,
@@ -12,6 +13,7 @@ import {
   Collapse,
   Image,
   Tooltip,
+  Spinner,
 } from "@chakra-ui/react";
 
 import {
@@ -91,12 +93,38 @@ export default function Card({
   const [open, setOpen] = useState<boolean>(false);
   const [chats, setChats] = useState<Array<IChat>>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [chatLoaded, setChatLoaded] = useState<boolean>(false);
+  const [height, setHeight] = useState<number>(0);
+
+  const chatBox = useRef<HTMLDivElement>(null);
+  const { ref, inView } = useInView();
 
   useEffect(() => {
-    if (info && wakzoo && bangon) {
+    if ((info && wakzoo) || bangon) {
       setLoaded(true);
     }
   }, [info, wakzoo, bangon]);
+
+  useEffect(() => {
+    if (inView) {
+      (async () => {
+        const res = await fetch(
+          `${API_BASE_URL}/chats?m=${name}&s=${chats[0].id}`
+        );
+        const data = await res.json();
+
+        setHeight(chatBox.current?.scrollHeight || 0);
+        setChats([...data[name], ...chats]);
+      })();
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
+
+  useEffect(() => {
+    if (chatBox.current)
+      chatBox.current.scrollTop = chatBox.current.scrollHeight - height;
+  }, [chatLoaded, height]);
 
   const onOpen = () => {
     if (!open && !chats.length) {
@@ -105,6 +133,7 @@ export default function Card({
         const data = await res.json();
 
         setChats(data[name]);
+        setChatLoaded(true);
       })();
     }
 
@@ -118,26 +147,27 @@ export default function Card({
         borderWidth="3px"
         borderRadius="10px"
         padding="1rem"
-        paddingBottom={2}
         marginBottom="10"
         bg={addAlpha(color, 0.4)}
       >
-        <Avatar
-          src={`${API_BASE_URL}/avatar?u=${id}`}
-          size="2xl"
-          bg="transparent"
-          showBorder={true}
-          borderWidth="5px"
-          borderColor="#808080"
-          as="a"
-          href={`https://twitch.tv/${id}`}
-        />
+        <Flex alignItems="center">
+          <Avatar
+            src={`${API_BASE_URL}/avatar?u=${id}`}
+            size="2xl"
+            bg="transparent"
+            showBorder={true}
+            borderWidth="5px"
+            borderColor="#808080"
+            as="a"
+            href={`https://twitch.tv/${id}`}
+          />
 
-        <Box marginLeft={5}>
-          <Heading as="a" href={`https://twitch.tv/${id}`}>
-            {name}
-          </Heading>
-        </Box>
+          <Box marginLeft={5}>
+            <Heading as="a" href={`https://twitch.tv/${id}`}>
+              {name}
+            </Heading>
+          </Box>
+        </Flex>
       </Box>
     );
   }
@@ -258,6 +288,7 @@ export default function Card({
               />
             </Box>
           )}
+
           {info.live && (
             <Divider
               marginTop={5}
@@ -275,7 +306,7 @@ export default function Card({
                 {watch.see.map((user: string) => (
                   <Avatar
                     size="lg"
-                    bg="white"
+                    bg="transparent"
                     src={`${API_BASE_URL}/avatar?u=${ITEMS[user].id}`}
                   />
                 ))}
@@ -283,6 +314,7 @@ export default function Card({
             </Box>
           )}
           <Box
+            ref={chatBox}
             className="chatBox"
             padding={2}
             marginTop={5}
@@ -291,6 +323,12 @@ export default function Card({
             overflowY="scroll"
             bg="white"
           >
+            {chats && (
+              <Flex justifyContent="center" margin={5} ref={ref}>
+                <Spinner color="black" />
+              </Flex>
+            )}
+
             {chats.map((chat: IChat, idx: number) => (
               <Chat chat={chat} key={idx} />
             ))}
