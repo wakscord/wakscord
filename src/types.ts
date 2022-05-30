@@ -37,7 +37,7 @@ export interface IBangonMember {
 }
 
 export interface IBangon {
-  info: { date: string; comment: string[] };
+  info: { idx: string; date: string; comment: string[] };
   members: { [name: string]: IBangonMember };
 }
 

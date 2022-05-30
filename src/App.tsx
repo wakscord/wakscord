@@ -1,4 +1,12 @@
-import { Box, Heading, Button, Flex, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Button,
+  Flex,
+  useDisclosure,
+  Divider,
+  Link,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import "./css/App.css";
 
@@ -13,6 +21,7 @@ export default function App() {
     wakzoo: {},
     bangon: {
       info: {
+        idx: "",
         date: "",
         comment: [],
       },
@@ -33,8 +42,8 @@ export default function App() {
   }, []);
 
   return (
-    <div className="App" style={{ padding: "3rem" }}>
-      <div className="content">
+    <div className="App">
+      <div className="content" style={{ padding: "3rem" }}>
         <Box margin={10}>
           <Heading as="h1" size="4xl" textAlign="center">
             이세돌 CCTV
@@ -58,6 +67,27 @@ export default function App() {
             bangon={data.bangon.members[item[0]]}
           />
         ))}
+
+        <Divider />
+      </div>
+
+      <div className="footer">
+        <Flex bgColor="#c5c5c5" padding={10} flexDirection="column" gap={2}>
+          <Link
+            href={`https://cafe.naver.com/steamindiegame/${data.bangon.info.idx}`}
+            textAlign="center"
+            color="#146eff"
+          >
+            [{data.bangon.info.date}] 이세돌 뱅온정보
+          </Link>
+          <Link
+            href="https://github.com/minibox24/isedol-cctv"
+            textAlign="center"
+            color="#146eff"
+          >
+            깃허브
+          </Link>
+        </Flex>
       </div>
     </div>
   );
