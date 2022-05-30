@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import ReactGA from "react-ga";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import App from "./App";
@@ -15,3 +16,5 @@ root.render(
     </ChakraProvider>
   </React.StrictMode>
 );
+
+ReactGA.initialize("G-9REMLTNZDT");
