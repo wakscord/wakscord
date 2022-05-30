@@ -268,8 +268,10 @@ export default function Card({
                 frameBorder={0}
                 allowFullScreen={true}
                 scrolling="no"
-                width="730"
-                height="410"
+                style={{
+                  width: "100%",
+                  aspectRatio: "16 / 9",
+                }}
               />
             </Box>
           )}
