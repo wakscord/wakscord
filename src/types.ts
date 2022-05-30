@@ -26,7 +26,9 @@ export interface IInfo {
 }
 
 export interface IWakzoo {
-  [name: string]: number;
+  time: number;
+  lastArticle: { idx: string; subject: string; time: number };
+  lastReply: { idx: string; subject: string; time: number };
 }
 
 export interface IBangonMember {
@@ -50,7 +52,7 @@ export interface IWatch {
 
 export interface Data {
   info: { [name: string]: IInfo };
-  wakzoo: IWakzoo;
+  wakzoo: { [name: string]: IWakzoo };
   bangon: IBangon;
   watch: IWatch;
 }

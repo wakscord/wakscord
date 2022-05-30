@@ -57,7 +57,7 @@ export default function App() {
             data={item[1]}
             info={data.info[item[0]]}
             watch={data.watch[item[0]]}
-            wakzoo={new Date(data.wakzoo[item[0]] * 1000)}
+            wakzoo={data.wakzoo[item[0]]}
             bangon={data.bangon.members[item[0]]}
           />
         ))}
