@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Box, Text, Tooltip } from "@chakra-ui/react";
 
 import Emote from "./Emote";
@@ -74,7 +75,9 @@ export default function Chat({
       <Text as="span" verticalAlign="middle">
         :{" "}
       </Text>
-      {render}
+      {render.map((el, index) => (
+        <Fragment key={index}>{el}</Fragment>
+      ))}
     </Box>
   );
 }
