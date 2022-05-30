@@ -173,13 +173,8 @@ export default function Card({
               </Tooltip>
             )}
 
-            {!info.live && watch.in && (
-              <Tooltip
-                hasArrow
-                label="채팅방에 접속 중"
-                bg="gray.300"
-                color="black"
-              >
+            {!info.live && !watch.in && (
+              <Tooltip hasArrow label="채팅방에 접속 중">
                 <AvatarBadge boxSize="1em" bg="blue.500" border="null" />
               </Tooltip>
             )}
