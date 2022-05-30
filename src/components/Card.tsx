@@ -119,7 +119,7 @@ export default function Card({
         borderRadius="10px"
         padding="1rem"
         marginBottom="10"
-        bg={addAlpha(color, 0.3)}
+        bg={addAlpha(color, 0.2)}
       >
         <Flex alignItems="center">
           <Avatar
@@ -151,7 +151,7 @@ export default function Card({
       padding="1rem"
       paddingBottom={2}
       marginBottom="10"
-      bg={addAlpha(color, 0.3)}
+      bg={addAlpha(color, 0.2)}
       boxShadow="2px 2px 10px 5px rgb(0 0 0 / 20%);"
     >
       <Flex alignItems="center" className="mfd">
