@@ -119,7 +119,7 @@ export default function Card({
         borderRadius="10px"
         padding="1rem"
         marginBottom="10"
-        bg={addAlpha(color, 0.4)}
+        bg={addAlpha(color, 0.3)}
       >
         <Flex alignItems="center">
           <Avatar

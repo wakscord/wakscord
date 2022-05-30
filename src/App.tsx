@@ -33,10 +33,7 @@ export default function App() {
   }, []);
 
   return (
-    <div
-      className="App"
-      style={{ backgroundColor: "#EDEDED", padding: "3rem" }}
-    >
+    <div className="App" style={{ padding: "3rem" }}>
       <div className="content">
         <Box margin={10}>
           <Heading as="h1" size="4xl" textAlign="center">
