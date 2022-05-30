@@ -305,6 +305,7 @@ export default function Card({
               <AvatarGroup>
                 {watch.see.map((user: string) => (
                   <Avatar
+                    key={user}
                     size="lg"
                     bg="transparent"
                     src={`${API_BASE_URL}/avatar?u=${ITEMS[user].id}`}
