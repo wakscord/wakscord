@@ -77,6 +77,7 @@ export default function App() {
             href={`https://cafe.naver.com/steamindiegame/${data.bangon.info.idx}`}
             textAlign="center"
             color="#146eff"
+            target="_blank"
           >
             [{data.bangon.info.date}] 이세돌 뱅온정보
           </Link>
@@ -84,6 +85,7 @@ export default function App() {
             href="https://github.com/minibox24/isedol-cctv"
             textAlign="center"
             color="#146eff"
+            target="_blank"
           >
             깃허브
           </Link>

@@ -131,10 +131,11 @@ export default function Card({
             borderColor="#808080"
             as="a"
             href={`https://twitch.tv/${id}`}
+            target="_blank"
           />
 
           <Box marginLeft={5}>
-            <Heading as="a" href={`https://twitch.tv/${id}`}>
+            <Heading as="a" href={`https://twitch.tv/${id}`} target="_blank">
               {name}
             </Heading>
           </Box>
@@ -164,6 +165,7 @@ export default function Card({
             borderColor={info.live ? color : "#808080"}
             as="a"
             href={`https://twitch.tv/${id}`}
+            target="_blank"
           >
             {info.live && (
               <Tooltip hasArrow label="방송 중">
@@ -183,7 +185,7 @@ export default function Card({
             )}
           </Avatar>
           <Box marginLeft={5}>
-            <Heading as="a" href={`https://twitch.tv/${id}`}>
+            <Heading as="a" href={`https://twitch.tv/${id}`} target="_blank">
               {name}
             </Heading>
             <Text color="blackAlpha.700">{info.title}</Text>

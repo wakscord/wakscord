@@ -43,6 +43,7 @@ export default function Wakzoo({
             <Link
               href={`https://cafe.naver.com/steamindiegame/${lastArticle.idx}`}
               color="#2f7dfb"
+              target="_blank"
             >
               {lastArticle.subject}
             </Link>
@@ -55,6 +56,7 @@ export default function Wakzoo({
             <Link
               href={`https://cafe.naver.com/steamindiegame/${lastReply.idx}`}
               color="#2f7dfb"
+              target="_blank"
             >
               {lastReply.subject}
             </Link>

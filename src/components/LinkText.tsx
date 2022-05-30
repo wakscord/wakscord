@@ -16,7 +16,7 @@ export default function LinkText({ text }: ILinkTextProp) {
       if (data) {
         result = result.replace(
           data[0],
-          `<a style="color: #2f7dfb" href="${data[2]}">${data[1]}</a>`
+          `<a style="color: #2f7dfb" href="${data[2]}" target="_blank">${data[1]}</a>`
         );
       }
     }
