@@ -195,7 +195,12 @@ export default function Card({
           </Box>
         </Flex>
 
-        <Flex marginLeft="auto" flexDirection="column" alignItems="center">
+        <Flex
+          w="150px"
+          marginLeft="auto"
+          flexDirection="column"
+          alignItems="center"
+        >
           {info.live && (
             <>
               <Flex alignItems="center" marginLeft="auto">
