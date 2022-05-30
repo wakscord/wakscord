@@ -5,4 +5,11 @@ body {
 .content {
   max-width: 48rem;
   margin: 0 auto;
+  padding: 3rem;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 10px;
+  }
 }

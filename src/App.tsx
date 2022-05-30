@@ -43,7 +43,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="content" style={{ padding: "3rem" }}>
+      <div className="content">
         <Box margin={10}>
           <Heading as="h1" size="4xl" textAlign="center">
             이세돌 CCTV

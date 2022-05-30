@@ -7,3 +7,17 @@
   border-radius: 15px;
   border: solid 3px transparent;
 }
+
+@media (max-width: 768px) {
+  .content {
+    padding: 10px;
+  }
+
+  .mfd {
+    flex-direction: column;
+  }
+
+  .mmr {
+    margin-right: auto;
+  }
+}

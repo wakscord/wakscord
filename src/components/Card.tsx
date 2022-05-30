@@ -153,43 +153,45 @@ export default function Card({
       bg={addAlpha(color, 0.3)}
       boxShadow="2px 2px 10px 5px rgb(0 0 0 / 20%);"
     >
-      <Flex alignItems="center">
-        <Avatar
-          src={`${API_BASE_URL}/avatar?u=${id}`}
-          size="2xl"
-          bg="transparent"
-          showBorder={true}
-          borderWidth="5px"
-          borderColor={info.live ? color : "#808080"}
-          as="a"
-          href={`https://twitch.tv/${id}`}
-        >
-          {info.live && (
-            <Tooltip hasArrow label="방송 중">
-              <AvatarBadge boxSize="1em" bg="green.500" border="null" />
-            </Tooltip>
-          )}
+      <Flex alignItems="center" className="mfd">
+        <Flex alignItems="center" className="mmr">
+          <Avatar
+            src={`${API_BASE_URL}/avatar?u=${id}`}
+            size="2xl"
+            bg="transparent"
+            showBorder={true}
+            borderWidth="5px"
+            borderColor={info.live ? color : "#808080"}
+            as="a"
+            href={`https://twitch.tv/${id}`}
+          >
+            {info.live && (
+              <Tooltip hasArrow label="방송 중">
+                <AvatarBadge boxSize="1em" bg="green.500" border="null" />
+              </Tooltip>
+            )}
 
-          {!info.live && watch.in && (
-            <Tooltip
-              hasArrow
-              label="채팅방에 접속 중"
-              bg="gray.300"
-              color="black"
-            >
-              <AvatarBadge boxSize="1em" bg="blue.500" border="null" />
-            </Tooltip>
-          )}
-        </Avatar>
-        <Box marginLeft={5}>
-          <Heading as="a" href={`https://twitch.tv/${id}`}>
-            {name}
-          </Heading>
-          <Text color="blackAlpha.700">{info.title}</Text>
+            {!info.live && watch.in && (
+              <Tooltip
+                hasArrow
+                label="채팅방에 접속 중"
+                bg="gray.300"
+                color="black"
+              >
+                <AvatarBadge boxSize="1em" bg="blue.500" border="null" />
+              </Tooltip>
+            )}
+          </Avatar>
+          <Box marginLeft={5}>
+            <Heading as="a" href={`https://twitch.tv/${id}`}>
+              {name}
+            </Heading>
+            <Text color="blackAlpha.700">{info.title}</Text>
 
-          {info.live && <Text color="blackAlpha.700">{info.game}</Text>}
-          {!info.live && bangon && <Bangon data={bangon} />}
-        </Box>
+            {info.live && <Text color="blackAlpha.700">{info.game}</Text>}
+            {!info.live && bangon && <Bangon data={bangon} />}
+          </Box>
+        </Flex>
 
         <Flex marginLeft="auto" flexDirection="column" alignItems="center">
           {info.live && (
