@@ -1,7 +1,8 @@
 import { Fragment } from "react";
-import { Box, Text, Tooltip } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 import Emote from "./Emote";
+import Tooltip from "./Tooltip";
 import { IChat } from "../types";
 import { ITEMS } from "../constants";
 
@@ -59,7 +60,7 @@ export default function Chat({
 
   return (
     <Box>
-      <Tooltip hasArrow label={time}>
+      <Tooltip label={time}>
         <Text as="span" verticalAlign="middle" fontSize=".8rem" color="#4C4C4C">
           {time.split(" ")[1].substring(0, 5)}{" "}
         </Text>

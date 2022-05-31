@@ -1,4 +1,5 @@
-import { Image, Tooltip } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
+import Tooltip from "./Tooltip";
 
 interface IEmoteProp {
   id: string;
@@ -7,7 +8,7 @@ interface IEmoteProp {
 
 export default function Emote({ id, name }: IEmoteProp) {
   return (
-    <Tooltip hasArrow label={name} bg="black">
+    <Tooltip label={name}>
       <Image
         src={`https://static-cdn.jtvnw.net/emoticons/v2/${id}/default/light/3.0`}
         w={30}

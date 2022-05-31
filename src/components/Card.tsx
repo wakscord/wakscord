@@ -12,7 +12,6 @@ import {
   Divider,
   Collapse,
   Image,
-  Tooltip,
   Spinner,
 } from "@chakra-ui/react";
 
@@ -31,6 +30,7 @@ import "../css/Card.css";
 import ReactGA from "react-ga4";
 import Chat from "./Chat";
 import Bangon from "./Bangon";
+import Tooltip from "./Tooltip";
 
 import { timeFormat, uptimeFormat, addAlpha } from "../utils";
 import { API_BASE_URL, ITEMS } from "../constants";
@@ -174,13 +174,13 @@ export default function Card({
             target="_blank"
           >
             {info.live && (
-              <Tooltip hasArrow label="방송 중">
+              <Tooltip label="방송 중">
                 <AvatarBadge boxSize="1em" bg="green.500" border="null" />
               </Tooltip>
             )}
 
             {!info.live && watch.in && (
-              <Tooltip hasArrow label="채팅방에 접속 중">
+              <Tooltip label="채팅방에 접속 중">
                 <AvatarBadge boxSize="1em" bg="blue.500" border="null" />
               </Tooltip>
             )}
@@ -206,13 +206,13 @@ export default function Card({
             <>
               <Flex alignItems="center" marginLeft="auto">
                 <Text fontSize="xl">{info.viewers.toLocaleString()}</Text>
-                <Tooltip hasArrow label="시청자">
+                <Tooltip label="시청자">
                   <ViewIcon h={6} w={6} marginLeft={1} />
                 </Tooltip>
               </Flex>
               <Flex alignItems="center" marginLeft="auto">
                 <Text fontSize="xl">{uptimeFormat(info.started_at)}</Text>
-                <Tooltip hasArrow label="업타임">
+                <Tooltip label="업타임">
                   <TimeIcon h={6} w={6} marginLeft={1} />
                 </Tooltip>
               </Flex>
@@ -224,7 +224,7 @@ export default function Card({
               <Text fontSize="xl">
                 {timeFormat(info.live_updated_at * 1000)}
               </Text>
-              <Tooltip hasArrow label="최근 방송">
+              <Tooltip label="최근 방송">
                 <CalendarIcon h={6} w={6} marginLeft={1} />
               </Tooltip>
             </Flex>
@@ -234,7 +234,7 @@ export default function Card({
             <Text fontSize="xl">
               {timeFormat(info.title_updated_at * 1000)}
             </Text>
-            <Tooltip hasArrow label="방송 제목 변경">
+            <Tooltip label="방송 제목 변경">
               <EditIcon h={6} w={6} marginLeft={1} />
             </Tooltip>
           </Flex>
@@ -249,7 +249,7 @@ export default function Card({
                 >
                   {timeFormat(wakzoo.time * 1000, true)}
                 </Text>
-                <Tooltip hasArrow label="왁물원 접속">
+                <Tooltip label="왁물원 접속">
                   <Image
                     h={6}
                     w={6}
@@ -297,7 +297,7 @@ export default function Card({
               </Text>
               <AvatarGroup>
                 {watch.see.map((user: string) => (
-                  <Tooltip hasArrow label={user}>
+                  <Tooltip label={user}>
                     <Avatar
                       key={user}
                       size="lg"
