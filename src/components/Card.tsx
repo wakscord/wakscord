@@ -5,7 +5,6 @@ import {
   Box,
   Avatar,
   AvatarBadge,
-  AvatarGroup,
   Flex,
   Heading,
   Text,
