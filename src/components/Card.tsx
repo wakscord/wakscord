@@ -293,16 +293,18 @@ export default function Card({
           {watch.see.length > 0 && (
             <Box marginTop={5}>
               <Text fontSize="1.25rem" fontWeight="bold">
-                시청 중
+                {name}님이 시청 중
               </Text>
               <AvatarGroup>
                 {watch.see.map((user: string) => (
-                  <Avatar
-                    key={user}
-                    size="lg"
-                    bg="transparent"
-                    src={`${API_BASE_URL}/avatar?u=${ITEMS[user].id}`}
-                  />
+                  <Tooltip hasArrow label={user}>
+                    <Avatar
+                      key={user}
+                      size="lg"
+                      bg="transparent"
+                      src={`${API_BASE_URL}/avatar?u=${ITEMS[user].id}`}
+                    />
+                  </Tooltip>
                 ))}
               </AvatarGroup>
             </Box>
