@@ -28,6 +28,7 @@ import {
 
 import "../css/Card.css";
 
+import ReactGA from "react-ga4";
 import Chat from "./Chat";
 import Bangon from "./Bangon";
 
@@ -99,6 +100,11 @@ export default function Card({
 
   const onOpen = () => {
     if (!open && !chats.length) {
+      ReactGA.event({
+        category: "openCard",
+        action: name,
+      });
+
       (async () => {
         const res = await fetch(`${API_BASE_URL}/chats?m=${name}`);
         const data = await res.json();
