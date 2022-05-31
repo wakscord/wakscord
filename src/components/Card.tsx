@@ -295,18 +295,21 @@ export default function Card({
               <Text fontSize="1.25rem" fontWeight="bold">
                 {name}님이 시청 중
               </Text>
-              <AvatarGroup>
-                {watch.see.map((user: string) => (
-                  <Tooltip label={user}>
-                    <Avatar
-                      key={user}
-                      size="lg"
-                      bg="transparent"
-                      src={`${API_BASE_URL}/avatar?u=${ITEMS[user].id}`}
-                    />
-                  </Tooltip>
-                ))}
-              </AvatarGroup>
+
+              {watch.see.map((user: string) => (
+                <Tooltip key={user} label={user}>
+                  <Avatar
+                    size="lg"
+                    bg="transparent"
+                    src={`${API_BASE_URL}/avatar?u=${ITEMS[user].id}`}
+                    borderWidth={2}
+                    style={{
+                      WebkitMarginEnd: "-0.75rem",
+                      marginInlineEnd: "-0.75rem",
+                    }}
+                  />
+                </Tooltip>
+              ))}
             </Box>
           )}
           <Box
