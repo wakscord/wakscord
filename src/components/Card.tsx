@@ -99,7 +99,10 @@ export default function Card({
 
   const onOpen = () => {
     if (!open && !chats.length) {
-      ReactGA.send(`open_${name}`);
+      ReactGA.event({
+        category: "open",
+        action: name,
+      });
 
       (async () => {
         const res = await fetch(`${API_BASE_URL}/chats?m=${name}`);
