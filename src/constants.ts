@@ -14,6 +14,7 @@ export const ITEMS: stringIndex = {
   고세구: { id: "gosegugosegu", color: "#467ec6" },
   비챤: { id: "viichan6", color: "#85ac20" },
   우왁굳: { id: "woowakgood", color: "#cfaa71" },
+  천양: { id: "chunyangkr", color: "#acfef8" },
   뢴트게늄: { id: "111roentgenium", color: "#ff69b4" },
 };
 
