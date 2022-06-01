@@ -22,10 +22,7 @@ export default function Bangon({ name, data: { status, info } }: IBangonProp) {
     <Popover
       autoFocus={false}
       onOpen={() => {
-        ReactGA.event({
-          category: "bangon",
-          action: name,
-        });
+        ReactGA.send(`bangon_${name}`);
       }}
     >
       <PopoverTrigger>

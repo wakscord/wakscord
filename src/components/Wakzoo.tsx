@@ -29,10 +29,7 @@ export default function Wakzoo({
     <Popover
       autoFocus={false}
       onOpen={() => {
-        ReactGA.event({
-          category: "wakzoo",
-          action: name,
-        });
+        ReactGA.send(`wakzoo_${name}`);
       }}
     >
       <PopoverTrigger>
