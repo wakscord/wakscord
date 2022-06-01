@@ -99,10 +99,7 @@ export default function Card({
 
   const onOpen = () => {
     if (!open && !chats.length) {
-      ReactGA.event({
-        category: "openCard",
-        action: name,
-      });
+      ReactGA.event(name);
 
       (async () => {
         const res = await fetch(`${API_BASE_URL}/chats?m=${name}`);
@@ -191,7 +188,7 @@ export default function Card({
             <Text color="blackAlpha.700">{info.title}</Text>
 
             {info.live && <Text color="blackAlpha.700">{info.game}</Text>}
-            {!info.live && bangon && <Bangon data={bangon} />}
+            {!info.live && bangon && <Bangon name={name} data={bangon} />}
           </Box>
         </Flex>
 
@@ -239,7 +236,7 @@ export default function Card({
           </Flex>
 
           <Box ml="auto">
-            <Wakzoo data={wakzoo}>
+            <Wakzoo name={name} data={wakzoo}>
               <Flex alignItems="center">
                 <Text
                   as="p"

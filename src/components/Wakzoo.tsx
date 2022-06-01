@@ -9,20 +9,29 @@ import {
   PopoverArrow,
 } from "@chakra-ui/react";
 
+import ReactGA from "react-ga4";
+
 import { timeFormat } from "../utils";
 import { IWakzoo } from "../types";
 
 interface IBangonProp {
+  name: string;
   data: IWakzoo;
   children: React.ReactNode;
 }
 
 export default function Wakzoo({
+  name,
   children,
   data: { lastArticle, lastReply },
 }: IBangonProp) {
   return (
-    <Popover autoFocus={false}>
+    <Popover
+      autoFocus={false}
+      onOpen={() => {
+        ReactGA.event(`wakzoo-${name}`);
+      }}
+    >
       <PopoverTrigger>
         <Text
           color="blackAlpha.700"

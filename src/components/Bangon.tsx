@@ -7,20 +7,24 @@ import {
   PopoverArrow,
 } from "@chakra-ui/react";
 
+import ReactGA from "react-ga4";
 import LinkText from "./LinkText";
 
-interface IBangon {
-  status: string;
-  info: string[];
-}
+import { IBangonMember } from "../types";
 
 interface IBangonProp {
-  data: IBangon;
+  name: string;
+  data: IBangonMember;
 }
 
-export default function Bangon({ data: { status, info } }: IBangonProp) {
+export default function Bangon({ name, data: { status, info } }: IBangonProp) {
   return (
-    <Popover autoFocus={false}>
+    <Popover
+      autoFocus={false}
+      onOpen={() => {
+        ReactGA.event(`bangon-${name}`);
+      }}
+    >
       <PopoverTrigger>
         <Text
           color="blackAlpha.700"
