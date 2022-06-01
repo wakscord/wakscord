@@ -117,11 +117,11 @@ export default function Card({
     return (
       <Box
         maxW="3xl"
-        borderWidth="3px"
         borderRadius="10px"
         padding="1rem"
         marginBottom="10"
         bg={addAlpha(color, 0.2)}
+        boxShadow="2px 2px 10px 5px rgb(0 0 0 / 20%);"
       >
         <Flex alignItems="center">
           <Avatar
@@ -140,6 +140,7 @@ export default function Card({
             <Heading as="a" href={`https://twitch.tv/${id}`} target="_blank">
               {name}
             </Heading>
+            <Text>로딩 중...</Text>
           </Box>
         </Flex>
       </Box>
