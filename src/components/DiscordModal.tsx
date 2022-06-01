@@ -88,6 +88,7 @@ export default function DiscordModal({ isOpen, onClose }: IDModalProp) {
       title: true,
       users: Object.keys(ITEMS),
     },
+    천양: { enabled: false, bangon: false, title: false, users: [] },
     뢴트게늄: { enabled: false, bangon: false, title: false, users: [] },
   });
 
