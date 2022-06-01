@@ -239,27 +239,29 @@ export default function Card({
             </Tooltip>
           </Flex>
 
-          <Box ml="auto">
-            <Wakzoo name={name} data={wakzoo}>
-              <Flex alignItems="center">
-                <Text
-                  as="p"
-                  fontSize="xl"
-                  _hover={{ textDecoration: "underline" }}
-                >
-                  {timeFormat(wakzoo.time * 1000, true)}
-                </Text>
-                <Tooltip label="왁물원 접속">
-                  <Image
-                    h={6}
-                    w={6}
-                    marginLeft={1}
-                    src={require("../assets/cafe.png")}
-                  />
-                </Tooltip>
-              </Flex>
-            </Wakzoo>
-          </Box>
+          {window.localStorage.getItem("cafe") && (
+            <Box ml="auto">
+              <Wakzoo name={name} data={wakzoo}>
+                <Flex alignItems="center">
+                  <Text
+                    as="p"
+                    fontSize="xl"
+                    _hover={{ textDecoration: "underline" }}
+                  >
+                    {timeFormat(wakzoo.time * 1000, true)}
+                  </Text>
+                  <Tooltip label="왁물원 접속">
+                    <Image
+                      h={6}
+                      w={6}
+                      marginLeft={1}
+                      src={require("../assets/cafe.png")}
+                    />
+                  </Tooltip>
+                </Flex>
+              </Wakzoo>
+            </Box>
+          )}
         </Flex>
       </Flex>
 
