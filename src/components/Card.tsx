@@ -331,9 +331,10 @@ export default function Card({
               </Flex>
             )}
 
-            {chats.map((chat: IChat, idx: number) => (
-              <Chat chat={chat} key={idx} />
-            ))}
+            {chats &&
+              chats.map((chat: IChat, idx: number) => (
+                <Chat chat={chat} key={idx} />
+              ))}
           </Box>
         </Box>
       </Collapse>
