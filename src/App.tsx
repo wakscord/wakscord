@@ -33,6 +33,10 @@ export default function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
+    if (window.location.search === "?cafe") {
+      window.localStorage.setItem("cafe", "true");
+    }
+
     (async () => {
       const res = await fetch(API_BASE_URL + "/data");
       const json = await res.json();
