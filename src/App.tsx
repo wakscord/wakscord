@@ -5,6 +5,7 @@ import {
   Flex,
   useDisclosure,
   Divider,
+  Text,
   Link,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
@@ -30,6 +31,7 @@ export default function App() {
     watch: {},
   });
 
+  const [count, setCount] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
@@ -42,6 +44,13 @@ export default function App() {
       const json = await res.json();
 
       setData(json);
+    })();
+
+    (async () => {
+      const res = await fetch(API_BASE_URL + "/status");
+      const json = await res.json();
+
+      setCount(json.count);
     })();
   }, []);
 
@@ -76,10 +85,16 @@ export default function App() {
       </div>
 
       <div className="footer">
-        <Flex bgColor="#c5c5c5" padding={10} flexDirection="column" gap={2}>
+        <Flex
+          bgColor="#c5c5c5"
+          padding={10}
+          flexDirection="column"
+          alignItems="center"
+          gap={2}
+        >
+          <Text>{count}개의 웹후크가 정보를 받아보는 중</Text>
           <Link
             href={`https://cafe.naver.com/steamindiegame/${data.bangon.info.idx}`}
-            textAlign="center"
             color="#146eff"
             target="_blank"
           >
@@ -87,7 +102,6 @@ export default function App() {
           </Link>
           <Link
             href="https://github.com/minibox24/isedol-cctv"
-            textAlign="center"
             color="#146eff"
             target="_blank"
           >
