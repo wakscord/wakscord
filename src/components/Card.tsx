@@ -197,7 +197,7 @@ export default function Card({
         </Flex>
 
         <Flex
-          w="150px"
+          w="180px"
           marginLeft="auto"
           flexDirection="column"
           alignItems="center"
