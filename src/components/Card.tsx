@@ -32,7 +32,7 @@ import Bangon from "./Bangon";
 import Tooltip from "./Tooltip";
 
 import { timeFormat, uptimeFormat, addAlpha } from "../utils";
-import { API_BASE_URL, ITEMS } from "../constants";
+import { API_BASE_URL, ITEMS, AVAILABLE_ITEMS } from "../constants";
 import {
   IUserData,
   IInfo,
@@ -65,10 +65,19 @@ export default function Card({
   const [chats, setChats] = useState<Array<IChat>>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [chatLoaded, setChatLoaded] = useState<boolean>(false);
+  const [chatEnd, setChatEnd] = useState<boolean>(false);
   const [height, setHeight] = useState<number>(0);
 
   const chatBox = useRef<HTMLDivElement>(null);
   const { ref, inView } = useInView();
+
+  const getExcludes = () => {
+    const users =
+      (JSON.parse(localStorage.getItem("users") ?? "null") as string[]) ??
+      AVAILABLE_ITEMS;
+
+    return AVAILABLE_ITEMS.filter((x) => !users.includes(x)).join(" ");
+  };
 
   useEffect(() => {
     if ((info && wakzoo) || bangon) {
@@ -79,12 +88,20 @@ export default function Card({
   useEffect(() => {
     if (inView) {
       (async () => {
+        if (!chats[0]) return;
+
         const res = await fetch(
-          `${API_BASE_URL}/chats?m=${name}&s=${chats[0].id}`
+          `${API_BASE_URL}/chats?m=${name}&s=${chats[0].id}&e=${getExcludes()}`
         );
         const data = await res.json();
 
         setHeight(chatBox.current?.scrollHeight || 0);
+
+        if (data[name][0] === chats[0]) {
+          setChatEnd(true);
+          return;
+        }
+
         setChats([...data[name], ...chats]);
       })();
     }
@@ -105,7 +122,9 @@ export default function Card({
       });
 
       (async () => {
-        const res = await fetch(`${API_BASE_URL}/chats?m=${name}`);
+        const res = await fetch(
+          `${API_BASE_URL}/chats?m=${name}&e=${getExcludes()}`
+        );
         const data = await res.json();
 
         setChats(data[name]);
@@ -325,7 +344,7 @@ export default function Card({
             bg="rgba(255 255 255 / 20%)"
             borderRadius="10px"
           >
-            {chats && (
+            {chats && chatEnd && (
               <Flex justifyContent="center" margin={5} ref={ref}>
                 <Spinner color="black" />
               </Flex>
