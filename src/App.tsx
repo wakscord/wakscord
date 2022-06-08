@@ -1,7 +1,6 @@
 import {
   Box,
   Image,
-  Heading,
   Button,
   Flex,
   useDisclosure,
