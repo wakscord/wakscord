@@ -59,7 +59,7 @@ export default function App() {
       <div className="content">
         <Box margin={10}>
           <Heading as="h1" size="4xl" textAlign="center">
-            이세돌 CCTV
+            왁스코드
           </Heading>
           <Flex justifyContent="center" marginTop={5}>
             <Button onClick={onOpen} colorScheme="blue">
@@ -101,7 +101,7 @@ export default function App() {
             [{data.bangon.info.date}] 이세돌 뱅온정보
           </Link>
           <Link
-            href="https://github.com/minibox24/isedol-cctv"
+            href="https://github.com/minibox24/wakscord"
             color="#146eff"
             target="_blank"
           >
