@@ -95,13 +95,12 @@ export default function Card({
         );
         const data = await res.json();
 
-        setHeight(chatBox.current?.scrollHeight || 0);
-
-        if (data[name][0] === chats[0]) {
+        if (data[name].length === 0 || data[name][0].id === chats[0].id) {
           setChatEnd(true);
           return;
         }
 
+        setHeight(chatBox.current?.scrollHeight || 0);
         setChats([...data[name], ...chats]);
       })();
     }
@@ -333,6 +332,7 @@ export default function Card({
               ))}
             </Box>
           )}
+          <Text>{JSON.stringify(chatEnd)}</Text>
           <Box
             ref={chatBox}
             className="chatBox"
@@ -344,11 +344,12 @@ export default function Card({
             bg="rgba(255 255 255 / 20%)"
             borderRadius="10px"
           >
-            {chats && chatEnd && (
-              <Flex justifyContent="center" margin={5} ref={ref}>
-                <Spinner color="black" />
-              </Flex>
-            )}
+            {chatEnd ||
+              (chats && (
+                <Flex justifyContent="center" margin={5} ref={ref}>
+                  <Spinner color="black" />
+                </Flex>
+              ))}
 
             {chats &&
               chats.map((chat: IChat, idx: number) => (
