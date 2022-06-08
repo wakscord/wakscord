@@ -57,7 +57,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="content">
-        <Box margin={10} mt={-10} textAlign="center">
+        <Box margin={10} mb={20} textAlign="center">
           <Image src="/logo.png" alt="왁스코드" display="inline" w="sm" />
           <Button onClick={onOpen} colorScheme="blue" mt={-10}>
             디스코드로 알림 받아보기
