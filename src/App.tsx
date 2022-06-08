@@ -13,6 +13,7 @@ import "./css/App.css";
 
 import Card from "./components/Card";
 import DiscordModal from "./components/DiscordModal";
+import ChatConfig from "./components/ChatConfig";
 import { API_BASE_URL, ITEMS } from "./constants";
 import { Data } from "./types";
 
@@ -32,7 +33,16 @@ export default function App() {
   });
 
   const [count, setCount] = useState(0);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: dIsOpen,
+    onOpen: dOnOpen,
+    onClose: dOnClose,
+  } = useDisclosure();
+  const {
+    isOpen: cIsOpen,
+    onOpen: cOnOpen,
+    onClose: cOnClose,
+  } = useDisclosure();
 
   useEffect(() => {
     if (window.location.search === "?cafe") {
@@ -59,10 +69,10 @@ export default function App() {
       <div className="content">
         <Box margin={10} mb={20} textAlign="center">
           <Image src="/logo.png" alt="왁스코드" display="inline" w="sm" />
-          <Button onClick={onOpen} colorScheme="blue" mt={-10}>
+          <Button onClick={dOnOpen} colorScheme="blue" mt={-10}>
             디스코드로 알림 받아보기
           </Button>
-          <DiscordModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+          <DiscordModal isOpen={dIsOpen} onOpen={dOnOpen} onClose={dOnClose} />
         </Box>
 
         {Object.entries(ITEMS).map((item, index) => (
@@ -88,7 +98,20 @@ export default function App() {
           alignItems="center"
           gap={2}
         >
-          <Text>{count}개의 웹후크가 정보를 받아보는 중</Text>
+          <Text mb={3}>{count}개의 웹후크가 정보를 받아보는 중</Text>
+
+          <Text
+            color="#146eff"
+            cursor="pointer"
+            _hover={{
+              textDecoration: "underline",
+            }}
+            onClick={cOnOpen}
+          >
+            채팅 설정
+          </Text>
+          <ChatConfig isOpen={cIsOpen} onOpen={cOnOpen} onClose={cOnClose} />
+
           <Link
             href={`https://cafe.naver.com/steamindiegame/${data.bangon.info.idx}`}
             color="#146eff"

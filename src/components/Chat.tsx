@@ -4,7 +4,7 @@ import { Box, Text } from "@chakra-ui/react";
 import Emote from "./Emote";
 import Tooltip from "./Tooltip";
 import { IChat } from "../types";
-import { ITEMS } from "../constants";
+import { ITEMS, AVAILABLE_ITEMS } from "../constants";
 
 interface IChatProp {
   chat: IChat;
@@ -13,6 +13,12 @@ interface IChatProp {
 export default function Chat({
   chat: { author, content, emotes, time },
 }: IChatProp) {
+  const users =
+    (JSON.parse(localStorage.getItem("users") ?? "null") as string[]) ??
+    AVAILABLE_ITEMS;
+
+  if (!users.includes(author)) return null;
+
   const render: Array<any> = [];
 
   const emotes_: any = {};
