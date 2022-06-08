@@ -1,5 +1,6 @@
 import {
   Box,
+  Image,
   Heading,
   Button,
   Flex,
@@ -57,16 +58,12 @@ export default function App() {
   return (
     <div className="App">
       <div className="content">
-        <Box margin={10}>
-          <Heading as="h1" size="4xl" textAlign="center">
-            왁스코드
-          </Heading>
-          <Flex justifyContent="center" marginTop={5}>
-            <Button onClick={onOpen} colorScheme="blue">
-              디스코드로 알림 받아보기
-            </Button>
-            <DiscordModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
-          </Flex>
+        <Box margin={10} mt={-10} textAlign="center">
+          <Image src="/logo.png" alt="왁스코드" display="inline" w="sm" />
+          <Button onClick={onOpen} colorScheme="blue" mt={-10}>
+            디스코드로 알림 받아보기
+          </Button>
+          <DiscordModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
         </Box>
 
         {Object.entries(ITEMS).map((item, index) => (
