@@ -310,7 +310,7 @@ export default function Card({
             />
           )}
 
-          {watch.see.length > 0 && (
+          {window.localStorage.getItem("watch") && watch.see.length > 0 && (
             <Box marginTop={5}>
               <Text fontSize="1.25rem" fontWeight="bold">
                 {name}님이 시청 중

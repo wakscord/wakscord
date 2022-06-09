@@ -49,6 +49,10 @@ export default function App() {
       window.localStorage.setItem("cafe", "true");
     }
 
+    if (window.location.search === "?watch") {
+      window.localStorage.setItem("watch", "true");
+    }
+
     (async () => {
       const res = await fetch(API_BASE_URL + "/data");
       const json = await res.json();
