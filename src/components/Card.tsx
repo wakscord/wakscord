@@ -332,7 +332,7 @@ export default function Card({
               ))}
             </Box>
           )}
-          <Text>{JSON.stringify(chatEnd)}</Text>
+
           <Box
             ref={chatBox}
             className="chatBox"
