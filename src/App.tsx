@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import "./css/App.css";
 
 import Card from "./components/Card";
+import ClickText from "./components/ClickText";
 import DiscordModal from "./components/DiscordModal";
 import ChatConfig from "./components/ChatConfig";
 import { API_BASE_URL, ITEMS } from "./constants";
@@ -103,17 +104,7 @@ export default function App() {
           gap={2}
         >
           <Text mb={3}>{count}개의 웹후크가 정보를 받아보는 중</Text>
-
-          <Text
-            color="#146eff"
-            cursor="pointer"
-            _hover={{
-              textDecoration: "underline",
-            }}
-            onClick={cOnOpen}
-          >
-            채팅 설정
-          </Text>
+          <ClickText onClick={cOnOpen}>채팅 설정</ClickText>
           <ChatConfig isOpen={cIsOpen} onOpen={cOnOpen} onClose={cOnClose} />
 
           <Link
