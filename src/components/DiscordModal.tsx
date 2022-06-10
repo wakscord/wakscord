@@ -23,6 +23,7 @@ import {
 
 import { Icon, ChevronUpIcon, ChevronDownIcon } from "@chakra-ui/icons";
 
+import HowToMakeWebhook from "./HowToMakeWebhook";
 import Option, { Data } from "./Option";
 import { API_BASE_URL, ITEMS } from "../constants";
 
@@ -42,6 +43,12 @@ export default function DiscordModal({ isOpen, onClose }: IDModalProp) {
   const isError = !webhookRegex.test(input);
   const { isOpen: optionIsOpen, onToggle: optionOnToggle } = useDisclosure();
   const toast = useToast();
+
+  const {
+    isOpen: hIsOpen,
+    onOpen: hOnOpen,
+    onClose: hOnClose,
+  } = useDisclosure();
 
   const [data, setData] = useState<{
     [name: string]: Data;
@@ -193,8 +200,23 @@ export default function DiscordModal({ isOpen, onClose }: IDModalProp) {
               onChange={handleInputChange}
             />
             {isError && (
-              <FormErrorMessage>
-                올바른 디스코드 웹후크 URL을 입력해주세요.
+              <FormErrorMessage flexDirection="column" alignItems="flex-start">
+                <Text>올바른 디스코드 웹후크 URL을 입력해주세요.</Text>
+                <Text
+                  onClick={hOnOpen}
+                  color="#146eff"
+                  cursor="pointer"
+                  _hover={{
+                    textDecoration: "underline",
+                  }}
+                >
+                  웹후크 만드는 법
+                </Text>
+                <HowToMakeWebhook
+                  onClose={hOnClose}
+                  isOpen={hIsOpen}
+                  onOpen={hOnOpen}
+                />
               </FormErrorMessage>
             )}
           </FormControl>
