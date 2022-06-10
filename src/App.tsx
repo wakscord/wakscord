@@ -39,6 +39,13 @@ export default function App() {
     onOpen: dOnOpen,
     onClose: dOnClose,
   } = useDisclosure();
+
+  const {
+    isOpen: gdIsOpen,
+    onOpen: gdOnOpen,
+    onClose: gdOnClose,
+  } = useDisclosure();
+
   const {
     isOpen: cIsOpen,
     onOpen: cOnOpen,
@@ -74,10 +81,18 @@ export default function App() {
       <div className="content">
         <Box margin={10} mb={20} textAlign="center">
           <Image src="/logo.png" alt="왁스코드" display="inline" w="sm" />
+
           <Button onClick={dOnOpen} colorScheme="blue" mt={-10}>
             디스코드로 알림 받아보기
           </Button>
-          <DiscordModal isOpen={dIsOpen} onOpen={dOnOpen} onClose={dOnClose} />
+
+          <ClickText onClick={gdOnOpen}>
+            세구님이 장기 휴뱅 선언을 했어요. 가끔 채팅창에 출몰하는 세구님
+            만나보기
+          </ClickText>
+
+          <DiscordModal isOpen={dIsOpen} onClose={dOnClose} />
+          <DiscordModal isOpen={gdIsOpen} onClose={gdOnClose} gosegu />
         </Box>
 
         {Object.entries(ITEMS).map((item, index) => (

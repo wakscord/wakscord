@@ -33,11 +33,15 @@ const webhookRegex =
 
 interface IDModalProp {
   isOpen: boolean;
-  onOpen: () => void;
   onClose: () => void;
+  gosegu?: boolean;
 }
 
-export default function DiscordModal({ isOpen, onClose }: IDModalProp) {
+export default function DiscordModal({
+  isOpen,
+  onClose,
+  gosegu = false,
+}: IDModalProp) {
   const [input, setInput] = useState("");
   const handleInputChange = (e: React.FormEvent<HTMLInputElement>) =>
     setInput((e.target as HTMLInputElement).value);
@@ -51,54 +55,77 @@ export default function DiscordModal({ isOpen, onClose }: IDModalProp) {
     onClose: hOnClose,
   } = useDisclosure();
 
+  let initData;
+
+  if (gosegu) {
+    initData = {
+      아이네: { enabled: false, bangon: false, title: false, users: [] },
+      징버거: { enabled: false, bangon: false, title: false, users: [] },
+      릴파: { enabled: false, bangon: false, title: false, users: [] },
+      주르르: { enabled: false, bangon: false, title: false, users: [] },
+      고세구: {
+        enabled: true,
+        bangon: true,
+        title: true,
+        users: ["고세구"],
+      },
+      비챤: { enabled: false, bangon: false, title: false, users: [] },
+      우왁굳: { enabled: false, bangon: false, title: false, users: [] },
+      천양: { enabled: false, bangon: false, title: false, users: [] },
+      뢴트게늄: { enabled: false, bangon: false, title: false, users: [] },
+    };
+  } else {
+    initData = {
+      아이네: {
+        enabled: true,
+        bangon: true,
+        title: true,
+        users: Object.keys(ITEMS),
+      },
+      징버거: {
+        enabled: true,
+        bangon: true,
+        title: true,
+        users: Object.keys(ITEMS),
+      },
+      릴파: {
+        enabled: true,
+        bangon: true,
+        title: true,
+        users: Object.keys(ITEMS),
+      },
+      주르르: {
+        enabled: true,
+        bangon: true,
+        title: true,
+        users: Object.keys(ITEMS),
+      },
+      고세구: {
+        enabled: true,
+        bangon: true,
+        title: true,
+        users: Object.keys(ITEMS),
+      },
+      비챤: {
+        enabled: true,
+        bangon: true,
+        title: true,
+        users: Object.keys(ITEMS),
+      },
+      우왁굳: {
+        enabled: true,
+        bangon: true,
+        title: true,
+        users: Object.keys(ITEMS),
+      },
+      천양: { enabled: false, bangon: false, title: false, users: [] },
+      뢴트게늄: { enabled: false, bangon: false, title: false, users: [] },
+    };
+  }
+
   const [data, setData] = useState<{
     [name: string]: Data;
-  }>({
-    아이네: {
-      enabled: true,
-      bangon: true,
-      title: true,
-      users: Object.keys(ITEMS),
-    },
-    징버거: {
-      enabled: true,
-      bangon: true,
-      title: true,
-      users: Object.keys(ITEMS),
-    },
-    릴파: {
-      enabled: true,
-      bangon: true,
-      title: true,
-      users: Object.keys(ITEMS),
-    },
-    주르르: {
-      enabled: true,
-      bangon: true,
-      title: true,
-      users: Object.keys(ITEMS),
-    },
-    고세구: {
-      enabled: true,
-      bangon: true,
-      title: true,
-      users: Object.keys(ITEMS),
-    },
-    비챤: {
-      enabled: true,
-      bangon: true,
-      title: true,
-      users: Object.keys(ITEMS),
-    },
-    우왁굳: {
-      enabled: true,
-      bangon: true,
-      title: true,
-      users: Object.keys(ITEMS),
-    },
-    천양: { enabled: false, bangon: false, title: false, users: [] },
-    뢴트게늄: { enabled: false, bangon: false, title: false, users: [] },
-  });
+  }>(initData);
 
   const handleChange = (name: string, _data: Data) => {
     setData({ ...data, [name]: _data });
