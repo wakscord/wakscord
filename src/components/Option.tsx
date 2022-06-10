@@ -61,7 +61,7 @@ export default function Option({ name, value, onChange }: IOptionProp) {
         <Box mt={1}>
           <Flex justifyContent="center" gap={3}>
             <Checkbox
-              defaultChecked
+              defaultChecked={bangon}
               onChange={(e) => {
                 setBangon(e.target.checked);
               }}
@@ -69,7 +69,7 @@ export default function Option({ name, value, onChange }: IOptionProp) {
               뱅온 알림
             </Checkbox>
             <Checkbox
-              defaultChecked
+              defaultChecked={title}
               onChange={(e) => {
                 setTitle(e.target.checked);
               }}
