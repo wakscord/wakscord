@@ -6,6 +6,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Text,
 } from "@chakra-ui/react";
 
 interface IHowToMakeWebhookProp {
@@ -31,6 +32,10 @@ export default function HowToMakeWebhook({
             controls
             src="/how_to_make_webhook.mp4"
           ></video>
+          <Text mt={3}>
+            모바일은 브라우저에서 디스코드 로그인 후 위 방법을 똑같이
+            따라해주세요.
+          </Text>
         </ModalBody>
         <ModalFooter />
       </ModalContent>
