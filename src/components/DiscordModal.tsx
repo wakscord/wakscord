@@ -60,11 +60,6 @@ export default function DiscordModal({
   let initData;
 
   if (gosegu) {
-    ReactGA.event({
-      category: "고세구",
-      action: "등록",
-    });
-
     initData = {
       아이네: { enabled: true, bangon: false, title: false, users: ["고세구"] },
       징버거: { enabled: true, bangon: false, title: false, users: ["고세구"] },
@@ -82,11 +77,6 @@ export default function DiscordModal({
       },
     };
   } else {
-    ReactGA.event({
-      category: "일반",
-      action: "등록",
-    });
-
     initData = {
       아이네: {
         enabled: true,
@@ -144,6 +134,18 @@ export default function DiscordModal({
   };
 
   const sub = async () => {
+    if (gosegu) {
+      ReactGA.event({
+        category: "고세구",
+        action: "구독",
+      });
+    } else {
+      ReactGA.event({
+        category: "일반",
+        action: "구독",
+      });
+    }
+
     const _data: {
       url: string;
       subs: {
