@@ -65,7 +65,7 @@ export default function Card({
   const [chats, setChats] = useState<Array<IChat>>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [chatLoaded, setChatLoaded] = useState<boolean>(false);
-  const [chatEnd, setChatEnd] = useState<boolean>(false);
+  // const [chatEnd, setChatEnd] = useState<boolean>(false);
   const [height, setHeight] = useState<number>(0);
 
   const chatBox = useRef<HTMLDivElement>(null);
@@ -96,7 +96,7 @@ export default function Card({
         const data = await res.json();
 
         if (data[name].length === 0 || data[name][0].id === chats[0].id) {
-          setChatEnd(true);
+          // setChatEnd(true);
           return;
         }
 
@@ -344,12 +344,11 @@ export default function Card({
             bg="rgba(255 255 255 / 20%)"
             borderRadius="10px"
           >
-            {chatEnd ||
-              (chats && (
-                <Flex justifyContent="center" margin={5} ref={ref}>
-                  <Spinner color="black" />
-                </Flex>
-              ))}
+            {false && (
+              <Flex justifyContent="center" margin={5} ref={ref}>
+                <Spinner color="black" />
+              </Flex>
+            )}
 
             {chats &&
               chats.map((chat: IChat, idx: number) => (
