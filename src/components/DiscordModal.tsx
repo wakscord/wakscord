@@ -28,6 +28,8 @@ import ClickText from "./ClickText";
 import Option, { Data } from "./Option";
 import { API_BASE_URL, ITEMS } from "../constants";
 
+import ReactGA from "react-ga4";
+
 const webhookRegex =
   /discord(?:app)?.com\/api\/webhooks\/([0-9]{17,20})\/([A-Za-z0-9.\-_]{60,68})/;
 
@@ -58,23 +60,33 @@ export default function DiscordModal({
   let initData;
 
   if (gosegu) {
+    ReactGA.event({
+      category: "고세구",
+      action: "등록",
+    });
+
     initData = {
-      아이네: { enabled: false, bangon: false, title: false, users: [] },
-      징버거: { enabled: false, bangon: false, title: false, users: [] },
-      릴파: { enabled: false, bangon: false, title: false, users: [] },
-      주르르: { enabled: false, bangon: false, title: false, users: [] },
-      고세구: {
+      아이네: { enabled: true, bangon: false, title: false, users: ["고세구"] },
+      징버거: { enabled: true, bangon: false, title: false, users: ["고세구"] },
+      릴파: { enabled: true, bangon: false, title: false, users: ["고세구"] },
+      주르르: { enabled: true, bangon: false, title: false, users: ["고세구"] },
+      고세구: { enabled: true, bangon: true, title: true, users: ["고세구"] },
+      비챤: { enabled: true, bangon: false, title: false, users: ["고세구"] },
+      우왁굳: { enabled: true, bangon: false, title: false, users: ["고세구"] },
+      천양: { enabled: true, bangon: false, title: false, users: ["고세구"] },
+      뢴트게늄: {
         enabled: true,
-        bangon: true,
-        title: true,
+        bangon: false,
+        title: false,
         users: ["고세구"],
       },
-      비챤: { enabled: false, bangon: false, title: false, users: [] },
-      우왁굳: { enabled: false, bangon: false, title: false, users: [] },
-      천양: { enabled: false, bangon: false, title: false, users: [] },
-      뢴트게늄: { enabled: false, bangon: false, title: false, users: [] },
     };
   } else {
+    ReactGA.event({
+      category: "일반",
+      action: "등록",
+    });
+
     initData = {
       아이네: {
         enabled: true,
