@@ -79,6 +79,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="content">
+        <h1>죄송합니다 서버가 갑작스러운 트래픽 증가로 정신을 못차립니다</h1>
         <Box margin={10} mb={20} textAlign="center">
           <Image src="/logo.png" alt="왁스코드" display="inline" w="sm" />
 
