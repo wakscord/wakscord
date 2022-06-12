@@ -9,10 +9,6 @@
 }
 
 @media (max-width: 768px) {
-  .content {
-    padding: 10px;
-  }
-
   .mfd {
     flex-direction: column;
   }
