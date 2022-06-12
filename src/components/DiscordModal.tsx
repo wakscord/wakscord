@@ -244,7 +244,18 @@ export default function DiscordModal({
             {isError && (
               <FormErrorMessage flexDirection="column" alignItems="flex-start">
                 <Text>올바른 디스코드 웹후크 URL을 입력해주세요.</Text>
-                <ClickText onClick={hOnOpen}>웹후크 만드는 법</ClickText>
+                <ClickText
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "만드는법",
+                      action: "만드는법",
+                    });
+
+                    hOnOpen();
+                  }}
+                >
+                  웹후크 만드는 법
+                </ClickText>
                 <HowToMakeWebhook
                   onClose={hOnClose}
                   isOpen={hIsOpen}
