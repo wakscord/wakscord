@@ -34,6 +34,7 @@ export default function App() {
   });
 
   const [count, setCount] = useState(0);
+  const [url, setUrl] = useState("");
   const {
     isOpen: dIsOpen,
     onOpen: dOnOpen,
@@ -53,12 +54,18 @@ export default function App() {
   } = useDisclosure();
 
   useEffect(() => {
-    if (window.location.search === "?cafe") {
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("cafe") !== null) {
       window.localStorage.setItem("cafe", "true");
     }
 
-    if (window.location.search === "?watch") {
+    if (params.get("watch") !== null) {
       window.localStorage.setItem("watch", "true");
+    }
+
+    if (params.get("make")) {
+      setUrl(`https://discord.com/api/webhooks/${params.get("make")}`);
     }
 
     (async () => {
@@ -76,6 +83,13 @@ export default function App() {
     })();
   }, []);
 
+  useEffect(() => {
+    if (url !== "") {
+      console.log(url);
+      dOnOpen();
+    }
+  }, [url, dOnOpen]);
+
   return (
     <div className="App">
       <div className="content">
@@ -92,8 +106,13 @@ export default function App() {
               만나보기
             </ClickText>
 
-            <DiscordModal isOpen={dIsOpen} onClose={dOnClose} />
-            <DiscordModal isOpen={gdIsOpen} onClose={gdOnClose} gosegu />
+            <DiscordModal isOpen={dIsOpen} onClose={dOnClose} url={url} />
+            <DiscordModal
+              isOpen={gdIsOpen}
+              onClose={gdOnClose}
+              url={url}
+              gosegu
+            />
           </Box>
         </Flex>
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   Modal,
@@ -36,12 +36,14 @@ const webhookRegex =
 interface IDModalProp {
   isOpen: boolean;
   onClose: () => void;
+  url?: string;
   gosegu?: boolean;
 }
 
 export default function DiscordModal({
   isOpen,
   onClose,
+  url = "",
   gosegu = false,
 }: IDModalProp) {
   const [input, setInput] = useState("");
@@ -56,6 +58,12 @@ export default function DiscordModal({
     onOpen: hOnOpen,
     onClose: hOnClose,
   } = useDisclosure();
+
+  useEffect(() => {
+    if (url) {
+      setInput(url);
+    }
+  }, [url]);
 
   let initData;
 
