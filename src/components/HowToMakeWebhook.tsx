@@ -7,6 +7,10 @@ import {
   ModalBody,
   ModalCloseButton,
   Text,
+  Link,
+  Code,
+  Flex,
+  Image,
 } from "@chakra-ui/react";
 
 interface IHowToMakeWebhookProp {
@@ -36,6 +40,23 @@ export default function HowToMakeWebhook({
             모바일은 브라우저에서 디스코드 로그인 후 위 방법을 똑같이
             따라해주세요.
           </Text>
+
+          <Text>
+            또는{" "}
+            <Link
+              href="https://discord.com/api/oauth2/authorize?client_id=520830713696878592&permissions=1100085521472&scope=bot%20applications.commands"
+              color="#146eff"
+              target="_blank"
+            >
+              이 봇
+            </Link>
+            을 초대 후 <Code>ㅁ왁스코드</Code> 커맨드를 사용해서 쉽게 웹후크를
+            만드세요
+          </Text>
+          <Flex mt={5} gap={3} maxW="sm">
+            <Image src="/minibot1.png" alignSelf="center" />
+            <Image src="/minibot2.png" alignSelf="center" />
+          </Flex>
         </ModalBody>
         <ModalFooter />
       </ModalContent>
