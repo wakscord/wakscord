@@ -65,6 +65,7 @@ export const AVAILABLE_ITEMS = [
   "보도도",
   "영바이브",
   "캔인데요",
+  "초원의야생마",
   "매니저",
   "VIP",
 ];
