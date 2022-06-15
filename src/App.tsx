@@ -59,16 +59,20 @@ export default function App() {
 
     if (params.get("cafe") !== null) {
       window.localStorage.setItem("cafe", "true");
+    }
 
+    if (params.get("watch") !== null) {
+      window.localStorage.setItem("watch", "true");
+    }
+
+    if (window.localStorage.getItem("cafe")) {
       ReactGA.event({
         category: "cafe",
         action: "cafe",
       });
     }
 
-    if (params.get("watch") !== null) {
-      window.localStorage.setItem("watch", "true");
-
+    if (window.localStorage.getItem("watch")) {
       ReactGA.event({
         category: "watch",
         action: "watch",
