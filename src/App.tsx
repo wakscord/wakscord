@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import "./css/App.css";
 
+import ReactGA from "react-ga4";
 import Card from "./components/Card";
 import ClickText from "./components/ClickText";
 import DiscordModal from "./components/DiscordModal";
@@ -58,10 +59,20 @@ export default function App() {
 
     if (params.get("cafe") !== null) {
       window.localStorage.setItem("cafe", "true");
+
+      ReactGA.event({
+        category: "cafe",
+        action: "cafe",
+      });
     }
 
     if (params.get("watch") !== null) {
       window.localStorage.setItem("watch", "true");
+
+      ReactGA.event({
+        category: "watch",
+        action: "watch",
+      });
     }
 
     if (params.get("make")) {
