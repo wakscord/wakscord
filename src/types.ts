@@ -25,10 +25,17 @@ export interface IInfo {
   live_updated_at: number;
 }
 
+export interface IArticle {
+  idx: string;
+  subject: string;
+  time: number;
+}
+
 export interface IWakzoo {
   time: number;
-  lastArticle: { idx: string; subject: string; time: number };
-  lastReply: { idx: string; subject: string; time: number };
+  lastArticle: IArticle;
+  lastReply: IArticle;
+  lastLike: IArticle;
 }
 
 export interface IBangonMember {

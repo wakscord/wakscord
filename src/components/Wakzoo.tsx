@@ -23,7 +23,7 @@ interface IBangonProp {
 export default function Wakzoo({
   name,
   children,
-  data: { lastArticle, lastReply },
+  data: { lastArticle, lastReply, lastLike },
 }: IBangonProp) {
   return (
     <Popover
@@ -71,6 +71,19 @@ export default function Wakzoo({
               target="_blank"
             >
               {lastReply.subject}
+            </Link>
+          </Box>
+
+          <Box mt={2}>
+            <Text fontWeight="bold">
+              최근 좋아요 ({timeFormat(lastLike.time * 1000)})
+            </Text>
+            <Link
+              href={`https://cafe.naver.com/steamindiegame/${lastLike.idx}`}
+              color="#2f7dfb"
+              target="_blank"
+            >
+              {lastLike.subject}
             </Link>
           </Box>
         </PopoverBody>
