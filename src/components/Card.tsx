@@ -10,7 +10,6 @@ import {
   Text,
   Divider,
   Collapse,
-  Image,
   Spinner,
   Link,
 } from "@chakra-ui/react";
