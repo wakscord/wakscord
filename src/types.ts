@@ -23,6 +23,12 @@ export interface IInfo {
   started_at: string;
   title_updated_at: number;
   live_updated_at: number;
+  youtube: {
+    id: string;
+    title: string;
+    description: string;
+    uploaded_at: string;
+  };
 }
 
 export interface IArticle {

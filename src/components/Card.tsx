@@ -12,6 +12,7 @@ import {
   Collapse,
   Image,
   Spinner,
+  Link,
 } from "@chakra-ui/react";
 
 import {
@@ -23,6 +24,8 @@ import {
   CalendarIcon,
   EditIcon,
 } from "@chakra-ui/icons";
+
+import { IoCafe, IoLogoYoutube } from "react-icons/io5";
 
 import "../css/Card.css";
 
@@ -257,10 +260,27 @@ export default function Card({
             </Tooltip>
           </Flex>
 
+          <Flex alignItems="center" marginLeft="auto">
+            <Tooltip label={info.youtube.title}>
+              <Link
+                href={`https://youtu.be/${info.youtube.id}`}
+                fontSize="xl"
+                _hover={{ textDecoration: "underline" }}
+              >
+                {timeFormat(new Date(info.youtube.uploaded_at).getTime())}
+              </Link>
+            </Tooltip>
+            <Tooltip label="유튜브 업로드">
+              <span>
+                <Icon as={IoLogoYoutube} h={6} w={6} marginLeft={1} />
+              </span>
+            </Tooltip>
+          </Flex>
+
           {window.localStorage.getItem("cafe") && (
             <Box ml="auto">
               <Wakzoo name={name} data={wakzoo}>
-                <Flex alignItems="center">
+                <Flex alignItems="center" color="black">
                   <Text
                     as="p"
                     fontSize="xl"
@@ -269,12 +289,9 @@ export default function Card({
                     {timeFormat(wakzoo.time * 1000, true)}
                   </Text>
                   <Tooltip label="왁물원 접속">
-                    <Image
-                      h={6}
-                      w={6}
-                      marginLeft={1}
-                      src={require("../assets/cafe.png")}
-                    />
+                    <span>
+                      <Icon as={IoCafe} h={6} w={6} marginLeft={1} />
+                    </span>
                   </Tooltip>
                 </Flex>
               </Wakzoo>
