@@ -34,7 +34,7 @@ import Bangon from "./Bangon";
 import Tooltip from "./Tooltip";
 
 import { timeFormat, uptimeFormat, addAlpha } from "../utils";
-import { API_BASE_URL, ITEMS, AVAILABLE_ITEMS } from "../constants";
+import { API_BASE_URL, ITEMS } from "../constants";
 import {
   IUserData,
   IInfo,

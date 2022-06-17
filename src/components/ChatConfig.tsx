@@ -21,7 +21,7 @@ interface IChatConfigProp {
 
 export default function ChatConfig({ isOpen, onClose }: IChatConfigProp) {
   const excludes = JSON.parse(
-    localStorage.getItem("excludes") ?? "null"
+    localStorage.getItem("excludes") ?? "[]"
   ) as string[];
 
   const users = AVAILABLE_ITEMS.filter((x) => !excludes.includes(x)) ?? [];
