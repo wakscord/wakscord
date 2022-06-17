@@ -18,6 +18,7 @@ export interface Data {
   enabled: boolean;
   bangon: boolean;
   title: boolean;
+  youtube: boolean;
   users: string[];
 }
 
@@ -31,6 +32,7 @@ export default function Option({ name, value, onChange }: IOptionProp) {
   const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: value.enabled });
   const [bangon, setBangon] = useState<boolean>(value.bangon);
   const [title, setTitle] = useState<boolean>(value.title);
+  const [youtube, setYoutube] = useState<boolean>(value.youtube);
   const [selected, setSelected] = useState(
     value.users.map((x) => {
       return { label: x, value: x };
@@ -42,6 +44,7 @@ export default function Option({ name, value, onChange }: IOptionProp) {
       enabled: isOpen,
       bangon,
       title,
+      youtube,
       users: selected.map((x) => x.value),
     });
 
@@ -49,7 +52,7 @@ export default function Option({ name, value, onChange }: IOptionProp) {
   }, [isOpen, bangon, title, selected]);
 
   return (
-    <Box mb={3}>
+    <Box mb={10}>
       <Flex alignItems="center">
         <Switch size="lg" isChecked={isOpen} onChange={onToggle} />
         <Text ml={2} fontSize="1.3rem" fontWeight="bold">
@@ -58,8 +61,8 @@ export default function Option({ name, value, onChange }: IOptionProp) {
       </Flex>
 
       <Collapse in={isOpen} style={{ overflow: "initial" }}>
-        <Box mt={1}>
-          <Flex justifyContent="center" gap={3}>
+        <Box mt={3} borderRadius={10} borderWidth={2} padding="5px">
+          <Flex flexDirection="column" mb={1}>
             <Checkbox
               defaultChecked={bangon}
               onChange={(e) => {
@@ -75,6 +78,14 @@ export default function Option({ name, value, onChange }: IOptionProp) {
               }}
             >
               방제 변경 알림
+            </Checkbox>
+            <Checkbox
+              defaultChecked={youtube}
+              onChange={(e) => {
+                setYoutube(e.target.checked);
+              }}
+            >
+              유튜브 업로드 알림
             </Checkbox>
           </Flex>
 

@@ -69,18 +69,67 @@ export default function DiscordModal({
 
   if (gosegu) {
     initData = {
-      아이네: { enabled: true, bangon: false, title: false, users: ["고세구"] },
-      징버거: { enabled: true, bangon: false, title: false, users: ["고세구"] },
-      릴파: { enabled: true, bangon: false, title: false, users: ["고세구"] },
-      주르르: { enabled: true, bangon: false, title: false, users: ["고세구"] },
-      고세구: { enabled: true, bangon: true, title: true, users: ["고세구"] },
-      비챤: { enabled: true, bangon: false, title: false, users: ["고세구"] },
-      우왁굳: { enabled: true, bangon: false, title: false, users: ["고세구"] },
-      천양: { enabled: true, bangon: false, title: false, users: ["고세구"] },
+      아이네: {
+        enabled: true,
+        bangon: false,
+        title: false,
+        youtube: false,
+        users: ["고세구"],
+      },
+      징버거: {
+        enabled: true,
+        bangon: false,
+        title: false,
+        youtube: false,
+        users: ["고세구"],
+      },
+      릴파: {
+        enabled: true,
+        bangon: false,
+        title: false,
+        youtube: false,
+        users: ["고세구"],
+      },
+      주르르: {
+        enabled: true,
+        bangon: false,
+        title: false,
+        youtube: false,
+        users: ["고세구"],
+      },
+      고세구: {
+        enabled: true,
+        bangon: true,
+        title: true,
+        youtube: true,
+        users: ["고세구"],
+      },
+      비챤: {
+        enabled: true,
+        bangon: false,
+        title: false,
+        youtube: false,
+        users: ["고세구"],
+      },
+      우왁굳: {
+        enabled: true,
+        bangon: false,
+        title: false,
+        youtube: false,
+        users: ["고세구"],
+      },
+      천양: {
+        enabled: true,
+        bangon: false,
+        title: false,
+        youtube: false,
+        users: ["고세구"],
+      },
       뢴트게늄: {
         enabled: true,
         bangon: false,
         title: false,
+        youtube: false,
         users: ["고세구"],
       },
     };
@@ -90,46 +139,65 @@ export default function DiscordModal({
         enabled: true,
         bangon: true,
         title: true,
+        youtube: true,
         users: Object.keys(ITEMS),
       },
       징버거: {
         enabled: true,
         bangon: true,
         title: true,
+        youtube: true,
         users: Object.keys(ITEMS),
       },
       릴파: {
         enabled: true,
         bangon: true,
         title: true,
+        youtube: true,
         users: Object.keys(ITEMS),
       },
       주르르: {
         enabled: true,
         bangon: true,
         title: true,
+        youtube: true,
         users: Object.keys(ITEMS),
       },
       고세구: {
         enabled: true,
         bangon: true,
         title: true,
+        youtube: true,
         users: Object.keys(ITEMS),
       },
       비챤: {
         enabled: true,
         bangon: true,
         title: true,
+        youtube: true,
         users: Object.keys(ITEMS),
       },
       우왁굳: {
         enabled: true,
         bangon: true,
         title: true,
+        youtube: true,
         users: Object.keys(ITEMS),
       },
-      천양: { enabled: false, bangon: false, title: false, users: [] },
-      뢴트게늄: { enabled: false, bangon: false, title: false, users: [] },
+      천양: {
+        enabled: false,
+        bangon: false,
+        title: false,
+        youtube: false,
+        users: [],
+      },
+      뢴트게늄: {
+        enabled: false,
+        bangon: false,
+        title: false,
+        youtube: false,
+        users: [],
+      },
     };
   }
 
@@ -171,6 +239,10 @@ export default function DiscordModal({
 
         if (data.title) {
           _data.subs[name].push("방제");
+        }
+
+        if (data.youtube) {
+          _data.subs[name].push("유튜브");
         }
       }
     });
