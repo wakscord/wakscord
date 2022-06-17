@@ -74,11 +74,11 @@ export default function Card({
   const { ref, inView } = useInView();
 
   const getExcludes = () => {
-    const users =
-      (JSON.parse(localStorage.getItem("users") ?? "null") as string[]) ??
-      AVAILABLE_ITEMS;
+    const excludes = JSON.parse(
+      localStorage.getItem("excludes") ?? "null"
+    ) as string[];
 
-    return AVAILABLE_ITEMS.filter((x) => !users.includes(x)).join(" ");
+    return excludes.join(" ");
   };
 
   useEffect(() => {

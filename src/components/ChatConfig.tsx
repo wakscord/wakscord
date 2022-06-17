@@ -20,9 +20,11 @@ interface IChatConfigProp {
 }
 
 export default function ChatConfig({ isOpen, onClose }: IChatConfigProp) {
-  const users =
-    (JSON.parse(localStorage.getItem("users") ?? "null") as string[]) ??
-    AVAILABLE_ITEMS;
+  const excludes = JSON.parse(
+    localStorage.getItem("excludes") ?? "null"
+  ) as string[];
+
+  const users = AVAILABLE_ITEMS.filter((x) => !excludes.includes(x)) ?? [];
 
   const [selected, setSelected] = useState(
     users.map((x) => {
@@ -31,9 +33,11 @@ export default function ChatConfig({ isOpen, onClose }: IChatConfigProp) {
   );
 
   useEffect(() => {
+    const sel = selected.map((y) => y.value);
+
     window.localStorage.setItem(
-      "users",
-      JSON.stringify(selected.map((x) => x.value))
+      "excludes",
+      JSON.stringify(AVAILABLE_ITEMS.filter((x) => !sel.includes(x)))
     );
   }, [selected]);
 
