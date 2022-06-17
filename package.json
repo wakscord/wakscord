@@ -18,6 +18,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-ga4": "^1.4.1",
+    "react-icons": "^4.4.0",
     "react-intersection-observer": "^9.2.0",
     "react-multi-select-component": "^4.2.7",
     "react-scripts": "5.0.1",
