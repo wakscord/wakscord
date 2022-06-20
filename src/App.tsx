@@ -6,7 +6,6 @@ import {
   useDisclosure,
   Divider,
   Text,
-  Link,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import "./css/App.css";
@@ -14,6 +13,7 @@ import "./css/App.css";
 import ReactGA from "react-ga4";
 import Card from "./components/Card";
 import ClickText from "./components/ClickText";
+import Link from "./components/Link";
 import DiscordModal from "./components/DiscordModal";
 import ChatConfig from "./components/ChatConfig";
 import { API_BASE_URL, ITEMS } from "./constants";
@@ -160,18 +160,10 @@ export default function App() {
 
           <Link
             href={`https://cafe.naver.com/steamindiegame/${data.bangon.info.idx}`}
-            color="#146eff"
-            target="_blank"
           >
             [{data.bangon.info.date}] 이세돌 뱅온정보
           </Link>
-          <Link
-            href="https://github.com/minibox24/wakscord"
-            color="#146eff"
-            target="_blank"
-          >
-            깃허브
-          </Link>
+          <Link href="https://github.com/minibox24/wakscord">깃허브</Link>
         </Flex>
       </div>
     </div>

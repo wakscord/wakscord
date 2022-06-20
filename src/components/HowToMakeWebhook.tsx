@@ -7,11 +7,12 @@ import {
   ModalBody,
   ModalCloseButton,
   Text,
-  Link,
   Code,
   Flex,
   Image,
 } from "@chakra-ui/react";
+
+import Link from "./Link";
 
 interface IHowToMakeWebhookProp {
   isOpen: boolean;
@@ -43,11 +44,7 @@ export default function HowToMakeWebhook({
 
           <Text>
             또는{" "}
-            <Link
-              href="https://discord.com/api/oauth2/authorize?client_id=520830713696878592&permissions=1100085521472&scope=bot%20applications.commands"
-              color="#146eff"
-              target="_blank"
-            >
+            <Link href="https://discord.com/api/oauth2/authorize?client_id=520830713696878592&permissions=1100085521472&scope=bot%20applications.commands">
               이 봇
             </Link>
             을 초대 후 <Code>ㅁ왁스코드</Code> 커맨드를 사용해서 쉽게 웹후크를
