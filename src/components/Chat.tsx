@@ -10,6 +10,34 @@ interface IChatProp {
   chat: IChat;
 }
 
+interface ISeguTextProp {
+  segu: boolean;
+  children: React.ReactNode;
+}
+
+function SeguText({ segu, children }: ISeguTextProp) {
+  const noSegu = Boolean(localStorage.getItem("noSegu"));
+
+  if (segu && !noSegu) {
+    return (
+      <Text
+        as="span"
+        verticalAlign="middle"
+        fontFamily="SeguSegu"
+        fontSize="1.4rem"
+      >
+        {children}
+      </Text>
+    );
+  }
+
+  return (
+    <Text as="span" verticalAlign="middle">
+      {children}
+    </Text>
+  );
+}
+
 export default function Chat({
   chat: { author, content, emotes, time },
 }: IChatProp) {
@@ -35,16 +63,7 @@ export default function Chat({
 
     if (emotes_[idx]) {
       if (words) {
-        render.push(
-          <Text
-            as="span"
-            verticalAlign="middle"
-            fontFamily={author === "고세구" ? "SeguSegu" : ""}
-            fontSize={author === "고세구" ? "1.4rem" : ""}
-          >
-            {words}
-          </Text>
-        );
+        render.push(<SeguText segu={author === "고세구"}>{words}</SeguText>);
 
         words = "";
       }
@@ -56,16 +75,7 @@ export default function Chat({
   });
 
   if (words) {
-    render.push(
-      <Text
-        as="span"
-        verticalAlign="middle"
-        fontFamily={author === "고세구" ? "SeguSegu" : ""}
-        fontSize={author === "고세구" ? "1.5rem" : ""}
-      >
-        {words}
-      </Text>
-    );
+    render.push(<SeguText segu={author === "고세구"}>{words}</SeguText>);
   }
 
   return (

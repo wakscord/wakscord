@@ -8,6 +8,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Checkbox,
 } from "@chakra-ui/react";
 
 import { MultiSelect } from "react-multi-select-component";
@@ -65,6 +66,17 @@ export default function ChatConfig({ isOpen, onClose }: IChatConfigProp) {
               selectSomeItems: "선택하기",
             }}
           />
+
+          <Checkbox
+            mt={3}
+            defaultChecked={!Boolean(localStorage.getItem("noSegu"))}
+            onChange={(e) => {
+              if (e.target.checked) localStorage.removeItem("noSegu");
+              else localStorage.setItem("noSegu", "true");
+            }}
+          >
+            세구님의 채팅에 세구세구체 적용
+          </Checkbox>
         </ModalBody>
 
         <ModalFooter />

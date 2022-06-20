@@ -163,6 +163,7 @@ export default function App() {
           >
             [{data.bangon.info.date}] 이세돌 뱅온정보
           </Link>
+          <Link href="https://github.com/JellyBrick/SeguFont">세구세구체</Link>
           <Link href="https://github.com/minibox24/wakscord">깃허브</Link>
         </Flex>
       </div>
