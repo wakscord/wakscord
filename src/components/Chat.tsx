@@ -36,7 +36,12 @@ export default function Chat({
     if (emotes_[idx]) {
       if (words) {
         render.push(
-          <Text as="span" verticalAlign="middle">
+          <Text
+            as="span"
+            verticalAlign="middle"
+            fontFamily={author === "고세구" ? "SeguSegu" : ""}
+            fontSize={author === "고세구" ? "1.4rem" : ""}
+          >
             {words}
           </Text>
         );
@@ -52,7 +57,12 @@ export default function Chat({
 
   if (words) {
     render.push(
-      <Text as="span" verticalAlign="middle">
+      <Text
+        as="span"
+        verticalAlign="middle"
+        fontFamily={author === "고세구" ? "SeguSegu" : ""}
+        fontSize={author === "고세구" ? "1.5rem" : ""}
+      >
         {words}
       </Text>
     );
@@ -76,6 +86,7 @@ export default function Chat({
       <Text as="span" verticalAlign="middle">
         :{" "}
       </Text>
+
       {render.map((el, index) => (
         <Fragment key={index}>{el}</Fragment>
       ))}
