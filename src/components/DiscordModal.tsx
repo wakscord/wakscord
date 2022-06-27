@@ -74,6 +74,8 @@ export default function DiscordModal({
         bangon: false,
         title: false,
         youtube: false,
+        toto: false,
+        cafe: false,
         users: ["고세구"],
       },
       징버거: {
@@ -81,6 +83,8 @@ export default function DiscordModal({
         bangon: false,
         title: false,
         youtube: false,
+        toto: false,
+        cafe: false,
         users: ["고세구"],
       },
       릴파: {
@@ -88,6 +92,8 @@ export default function DiscordModal({
         bangon: false,
         title: false,
         youtube: false,
+        toto: false,
+        cafe: false,
         users: ["고세구"],
       },
       주르르: {
@@ -95,6 +101,8 @@ export default function DiscordModal({
         bangon: false,
         title: false,
         youtube: false,
+        toto: false,
+        cafe: false,
         users: ["고세구"],
       },
       고세구: {
@@ -102,6 +110,8 @@ export default function DiscordModal({
         bangon: true,
         title: true,
         youtube: true,
+        toto: true,
+        cafe: true,
         users: ["고세구"],
       },
       비챤: {
@@ -109,6 +119,8 @@ export default function DiscordModal({
         bangon: false,
         title: false,
         youtube: false,
+        toto: false,
+        cafe: false,
         users: ["고세구"],
       },
       우왁굳: {
@@ -116,6 +128,8 @@ export default function DiscordModal({
         bangon: false,
         title: false,
         youtube: false,
+        toto: false,
+        cafe: false,
         users: ["고세구"],
       },
       천양: {
@@ -123,6 +137,8 @@ export default function DiscordModal({
         bangon: false,
         title: false,
         youtube: false,
+        toto: false,
+        cafe: false,
         users: ["고세구"],
       },
       뢴트게늄: {
@@ -130,6 +146,8 @@ export default function DiscordModal({
         bangon: false,
         title: false,
         youtube: false,
+        toto: false,
+        cafe: false,
         users: ["고세구"],
       },
     };
@@ -140,6 +158,8 @@ export default function DiscordModal({
         bangon: true,
         title: true,
         youtube: true,
+        toto: true,
+        cafe: true,
         users: Object.keys(ITEMS),
       },
       징버거: {
@@ -147,6 +167,8 @@ export default function DiscordModal({
         bangon: true,
         title: true,
         youtube: true,
+        toto: true,
+        cafe: true,
         users: Object.keys(ITEMS),
       },
       릴파: {
@@ -154,6 +176,8 @@ export default function DiscordModal({
         bangon: true,
         title: true,
         youtube: true,
+        toto: true,
+        cafe: true,
         users: Object.keys(ITEMS),
       },
       주르르: {
@@ -161,6 +185,8 @@ export default function DiscordModal({
         bangon: true,
         title: true,
         youtube: true,
+        toto: true,
+        cafe: true,
         users: Object.keys(ITEMS),
       },
       고세구: {
@@ -168,6 +194,8 @@ export default function DiscordModal({
         bangon: true,
         title: true,
         youtube: true,
+        toto: true,
+        cafe: true,
         users: Object.keys(ITEMS),
       },
       비챤: {
@@ -175,6 +203,8 @@ export default function DiscordModal({
         bangon: true,
         title: true,
         youtube: true,
+        toto: true,
+        cafe: true,
         users: Object.keys(ITEMS),
       },
       우왁굳: {
@@ -182,6 +212,8 @@ export default function DiscordModal({
         bangon: true,
         title: true,
         youtube: true,
+        toto: true,
+        cafe: true,
         users: Object.keys(ITEMS),
       },
       천양: {
@@ -189,6 +221,8 @@ export default function DiscordModal({
         bangon: false,
         title: false,
         youtube: false,
+        toto: false,
+        cafe: false,
         users: [],
       },
       뢴트게늄: {
@@ -196,6 +230,8 @@ export default function DiscordModal({
         bangon: false,
         title: false,
         youtube: false,
+        toto: false,
+        cafe: false,
         users: [],
       },
     };
@@ -243,6 +279,14 @@ export default function DiscordModal({
 
         if (data.youtube) {
           _data.subs[name].push("유튜브");
+        }
+
+        if (data.toto) {
+          _data.subs[name].push("토토");
+        }
+
+        if (data.cafe) {
+          _data.subs[name].push("카페");
         }
       }
     });

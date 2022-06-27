@@ -19,6 +19,8 @@ export interface Data {
   bangon: boolean;
   title: boolean;
   youtube: boolean;
+  toto: boolean;
+  cafe: boolean;
   users: string[];
 }
 
@@ -33,6 +35,8 @@ export default function Option({ name, value, onChange }: IOptionProp) {
   const [bangon, setBangon] = useState<boolean>(value.bangon);
   const [title, setTitle] = useState<boolean>(value.title);
   const [youtube, setYoutube] = useState<boolean>(value.youtube);
+  const [toto, setToto] = useState<boolean>(value.toto);
+  const [cafe, setCafe] = useState<boolean>(value.cafe);
   const [selected, setSelected] = useState(
     value.users.map((x) => {
       return { label: x, value: x };
@@ -45,6 +49,8 @@ export default function Option({ name, value, onChange }: IOptionProp) {
       bangon,
       title,
       youtube,
+      toto,
+      cafe,
       users: selected.map((x) => x.value),
     });
 
@@ -86,6 +92,22 @@ export default function Option({ name, value, onChange }: IOptionProp) {
               }}
             >
               유튜브 업로드 알림
+            </Checkbox>
+            <Checkbox
+              defaultChecked={toto}
+              onChange={(e) => {
+                setToto(e.target.checked);
+              }}
+            >
+              토토 결과 알림
+            </Checkbox>
+            <Checkbox
+              defaultChecked={cafe}
+              onChange={(e) => {
+                setCafe(e.target.checked);
+              }}
+            >
+              왁물원 글 알림
             </Checkbox>
           </Flex>
 
