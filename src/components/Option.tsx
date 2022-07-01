@@ -55,7 +55,7 @@ export default function Option({ name, value, onChange }: IOptionProp) {
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, bangon, title, selected]);
+  }, [isOpen, bangon, title, youtube, toto, cafe, selected]);
 
   return (
     <Box mb={10}>
