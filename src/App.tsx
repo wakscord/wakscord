@@ -116,10 +116,10 @@ export default function App() {
               디스코드로 알림 받아보기
             </Button>
 
-            <ClickText onClick={gdOnOpen}>
+            {/* <ClickText onClick={gdOnOpen}>
               세구님이 장기 휴뱅 선언을 했어요. 가끔 채팅창에 출몰하는 세구님
               만나보기
-            </ClickText>
+            </ClickText> */}
 
             <DiscordModal isOpen={dIsOpen} onClose={dOnClose} url={url} />
             <DiscordModal
