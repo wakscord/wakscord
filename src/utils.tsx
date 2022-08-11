@@ -36,24 +36,3 @@ export function addAlpha(color: string, opacity: number) {
   var _opacity = Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255);
   return color + _opacity.toString(16).toUpperCase();
 }
-
-export class LocalStorage {
-  static setItem(key: string, item: string) {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(key, item);
-    }
-  }
-
-  static getItem(key: string) {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem(key);
-    }
-    return null;
-  }
-
-  static removeItem(key: string) {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem(key);
-    }
-  }
-}

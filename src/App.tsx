@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   Box,
   Image,
@@ -10,35 +8,31 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import "./css/App.css";
 
 import ReactGA from "react-ga4";
-import Card from "../components/Card";
-import ClickText from "../components/ClickText";
-import Link from "../components/Link";
-import DiscordModal from "../components/DiscordModal";
-import ChatConfig from "../components/ChatConfig";
-import { API_BASE_URL, ITEMS } from "../constants";
-import { LocalStorage } from "../utils";
-import { Data } from "../types";
+import Card from "./components/Card";
+import ClickText from "./components/ClickText";
+import Link from "./components/Link";
+import DiscordModal from "./components/DiscordModal";
+import ChatConfig from "./components/ChatConfig";
+import { API_BASE_URL, ITEMS } from "./constants";
+import { Data } from "./types";
 
-interface IAppProp {
-  data: Data;
-}
-
-export default function App({ data }: IAppProp) {
-  // const [data, setData] = useState<Data>({
-  //   info: {},
-  //   wakzoo: {},
-  //   bangon: {
-  //     info: {
-  //       idx: "",
-  //       date: "",
-  //       comment: [],
-  //     },
-  //     members: {},
-  //   },
-  //   watch: {},
-  // });
+export default function App() {
+  const [data, setData] = useState<Data>({
+    info: {},
+    wakzoo: {},
+    bangon: {
+      info: {
+        idx: "",
+        date: "",
+        comment: [],
+      },
+      members: {},
+    },
+    watch: {},
+  });
 
   const [count, setCount] = useState(0);
   const [url, setUrl] = useState("");
@@ -64,21 +58,21 @@ export default function App({ data }: IAppProp) {
     const params = new URLSearchParams(window.location.search);
 
     if (params.get("cafe") !== null) {
-      LocalStorage.setItem("cafe", "true");
+      window.localStorage.setItem("cafe", "true");
     }
 
     if (params.get("watch") !== null) {
-      LocalStorage.setItem("watch", "true");
+      window.localStorage.setItem("watch", "true");
     }
 
-    if (LocalStorage.getItem("cafe")) {
+    if (window.localStorage.getItem("cafe")) {
       ReactGA.event({
         category: "cafe",
         action: "cafe",
       });
     }
 
-    if (LocalStorage.getItem("watch")) {
+    if (window.localStorage.getItem("watch")) {
       ReactGA.event({
         category: "watch",
         action: "watch",
@@ -89,12 +83,12 @@ export default function App({ data }: IAppProp) {
       setUrl(`https://discord.com/api/webhooks/${params.get("make")}`);
     }
 
-    // (async () => {
-    //   const res = await fetch(API_BASE_URL + "/data");
-    //   const json = await res.json();
+    (async () => {
+      const res = await fetch(API_BASE_URL + "/data");
+      const json = await res.json();
 
-    //   setData(json);
-    // })();
+      setData(json);
+    })();
 
     (async () => {
       const res = await fetch(API_BASE_URL + "/status");
@@ -175,15 +169,4 @@ export default function App({ data }: IAppProp) {
       </div>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const res = await fetch(API_BASE_URL + "/data");
-  const json = await res.json();
-
-  return {
-    props: {
-      data: json,
-    },
-  };
 }

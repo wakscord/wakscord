@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useState, useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -28,12 +26,14 @@ import {
 
 import { IoCafe, IoLogoYoutube } from "react-icons/io5";
 
+import "../css/Card.css";
+
 import ReactGA from "react-ga4";
 import Chat from "./Chat";
 import Bangon from "./Bangon";
 import Tooltip from "./Tooltip";
 
-import { timeFormat, uptimeFormat, addAlpha, LocalStorage } from "../utils";
+import { timeFormat, uptimeFormat, addAlpha } from "../utils";
 import { API_BASE_URL, ITEMS } from "../constants";
 import {
   IUserData,
@@ -75,7 +75,7 @@ export default function Card({
 
   const getExcludes = () => {
     const excludes = JSON.parse(
-      LocalStorage.getItem("excludes") ?? "null"
+      localStorage.getItem("excludes") ?? "null"
     ) as string[];
 
     return excludes.join(" ");
@@ -276,7 +276,7 @@ export default function Card({
             </Tooltip>
           </Flex>
 
-          {LocalStorage.getItem("cafe") && (
+          {window.localStorage.getItem("cafe") && (
             <Box ml="auto">
               <Wakzoo name={name} data={wakzoo}>
                 <Flex alignItems="center" color="black">
@@ -326,7 +326,7 @@ export default function Card({
             />
           )}
 
-          {LocalStorage.getItem("watch") && watch.see.length > 0 && (
+          {window.localStorage.getItem("watch") && watch.see.length > 0 && (
             <Box marginTop={5}>
               <Text fontSize="1.25rem" fontWeight="bold">
                 {name}님이 시청 중

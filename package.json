@@ -15,7 +15,6 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "framer-motion": "^6",
-    "next": "^12.2.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-ga4": "^1.4.1",
@@ -27,9 +26,10 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

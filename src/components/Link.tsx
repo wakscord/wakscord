@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Link as UILink } from "@chakra-ui/react";
 
 interface ILinkProp {
