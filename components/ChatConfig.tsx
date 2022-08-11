@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useState, useEffect } from "react";
 
 import {
@@ -13,6 +15,7 @@ import {
 
 import { MultiSelect } from "react-multi-select-component";
 import { AVAILABLE_ITEMS } from "../constants";
+import { LocalStorage } from "../utils";
 
 interface IChatConfigProp {
   isOpen: boolean;
@@ -22,7 +25,7 @@ interface IChatConfigProp {
 
 export default function ChatConfig({ isOpen, onClose }: IChatConfigProp) {
   const excludes = JSON.parse(
-    localStorage.getItem("excludes") ?? "[]"
+    LocalStorage.getItem("excludes") ?? "[]"
   ) as string[];
 
   const users = AVAILABLE_ITEMS.filter((x) => !excludes.includes(x)) ?? [];
@@ -36,7 +39,7 @@ export default function ChatConfig({ isOpen, onClose }: IChatConfigProp) {
   useEffect(() => {
     const sel = selected.map((y) => y.value);
 
-    window.localStorage.setItem(
+    LocalStorage.setItem(
       "excludes",
       JSON.stringify(AVAILABLE_ITEMS.filter((x) => !sel.includes(x)))
     );
@@ -69,10 +72,10 @@ export default function ChatConfig({ isOpen, onClose }: IChatConfigProp) {
 
           <Checkbox
             mt={3}
-            defaultChecked={!Boolean(localStorage.getItem("noSegu"))}
+            defaultChecked={!Boolean(LocalStorage.getItem("noSegu"))}
             onChange={(e) => {
-              if (e.target.checked) localStorage.removeItem("noSegu");
-              else localStorage.setItem("noSegu", "true");
+              if (e.target.checked) LocalStorage.removeItem("noSegu");
+              else LocalStorage.setItem("noSegu", "true");
             }}
           >
             세구님의 채팅에 세구세구체 적용

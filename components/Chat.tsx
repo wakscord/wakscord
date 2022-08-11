@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Fragment } from "react";
 import { Box, Text } from "@chakra-ui/react";
 
@@ -5,6 +7,7 @@ import Emote from "./Emote";
 import Tooltip from "./Tooltip";
 import { IChat } from "../types";
 import { ITEMS } from "../constants";
+import { LocalStorage } from "../utils";
 
 interface IChatProp {
   chat: IChat;
@@ -16,7 +19,7 @@ interface ISeguTextProp {
 }
 
 function SeguText({ segu, children }: ISeguTextProp) {
-  const noSegu = Boolean(localStorage.getItem("noSegu"));
+  const noSegu = Boolean(LocalStorage.getItem("noSegu"));
 
   if (segu && !noSegu) {
     return (
