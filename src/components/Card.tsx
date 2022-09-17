@@ -183,7 +183,7 @@ export default function Card({
       <Flex alignItems="center" className="mfd">
         <Flex alignItems="center" className="mmr">
           <Avatar
-            src={`${API_BASE_URL}/avatar?u=${id}`}
+            src={`${API_BASE_URL}/avatar/${id}.png`}
             size="2xl"
             bg="transparent"
             showBorder={true}
@@ -337,7 +337,7 @@ export default function Card({
                   <Avatar
                     size="lg"
                     bg="transparent"
-                    src={`${API_BASE_URL}/avatar?u=${ITEMS[user].id}`}
+                    src={`${API_BASE_URL}/avatar/${ITEMS[user].id}.png`}
                     borderWidth={2}
                     style={{
                       WebkitMarginEnd: "-0.75rem",
