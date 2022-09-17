@@ -201,7 +201,7 @@ export default function App() {
             src="/logo.png"
             alt="왁스코드"
             w="sm"
-            className={data.loaded ? "" : "loadingLogo"}
+            className={error ? "" : "loadingLogo"}
           />
 
           {error && (
