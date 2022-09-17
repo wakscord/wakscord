@@ -23,3 +23,21 @@ body::-webkit-scrollbar-thumb {
     padding: 10px;
   }
 }
+
+.loadingLogo {
+  animation: loadingLogo 1.5s infinite ease-out;
+}
+
+@keyframes loadingLogo {
+  0% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.1;
+  }
+}

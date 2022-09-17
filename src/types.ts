@@ -64,6 +64,7 @@ export interface IWatch {
 }
 
 export interface Data {
+  loaded: boolean;
   info: { [name: string]: IInfo };
   wakzoo: { [name: string]: IWakzoo };
   bangon: IBangon;
