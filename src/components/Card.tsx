@@ -148,7 +148,7 @@ export default function Card({
       >
         <Flex alignItems="center">
           <Avatar
-            src={`${API_BASE_URL}/avatar?u=${id}`}
+            src={`${API_BASE_URL}/avatar/${id}.png`}
             size="2xl"
             bg="transparent"
             showBorder={true}
