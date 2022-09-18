@@ -160,7 +160,13 @@ export default function Card({
           />
 
           <Box marginLeft={5}>
-            <Heading as="a" href={`https://twitch.tv/${id}`} target="_blank">
+            <Heading
+              as="a"
+              href={`https://twitch.tv/${id}`}
+              target="_blank"
+              fontWeight="black"
+              ml={-1}
+            >
               {name}
             </Heading>
             <Text>로딩 중...</Text>
@@ -206,7 +212,12 @@ export default function Card({
             )}
           </Avatar>
           <Box marginLeft={5}>
-            <Heading as="a" href={`https://twitch.tv/${id}`} target="_blank">
+            <Heading
+              as="a"
+              href={`https://twitch.tv/${id}`}
+              target="_blank"
+              ml={-1}
+            >
               {name}
             </Heading>
             <Text color="blackAlpha.700">{info.title}</Text>
@@ -217,7 +228,7 @@ export default function Card({
         </Flex>
 
         <Flex
-          w="180px"
+          minW="120px"
           marginLeft="auto"
           flexDirection="column"
           alignItems="center"

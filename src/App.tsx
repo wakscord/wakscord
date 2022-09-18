@@ -123,11 +123,23 @@ export default function App() {
           <div className="content">
             <Flex justifyContent="center" alignItems="center">
               <Box margin={10} mb={20} textAlign="center" maxW="600px">
-                <Image src="/logo.png" alt="왁스코드" display="inline" w="sm" />
+                <Flex flexDirection="column">
+                  <Image
+                    src="/logo.png"
+                    alt="왁스코드"
+                    display="inline"
+                    w="sm"
+                  />
 
-                <Button onClick={dOnOpen} colorScheme="blue" mt={-10}>
-                  디스코드로 알림 받아보기
-                </Button>
+                  <Button
+                    onClick={dOnOpen}
+                    colorScheme="blue"
+                    mt={0}
+                    flexGrow="inherit"
+                  >
+                    디스코드로 알림 받아보기
+                  </Button>
+                </Flex>
 
                 {/* <ClickText onClick={gdOnOpen}>
               세구님이 장기 휴뱅 선언을 했어요. 가끔 채팅창에 출몰하는 세구님
