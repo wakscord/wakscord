@@ -164,7 +164,7 @@ export default function Card({
               as="a"
               href={`https://twitch.tv/${id}`}
               target="_blank"
-              fontWeight="black"
+              fontFamily="Pretendard"
               ml={-1}
             >
               {name}
@@ -216,7 +216,7 @@ export default function Card({
               as="a"
               href={`https://twitch.tv/${id}`}
               target="_blank"
-              ml={-1}
+              fontFamily="Pretendard"
             >
               {name}
             </Heading>
