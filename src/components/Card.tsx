@@ -275,6 +275,7 @@ export default function Card({
               <Link
                 href={`https://youtu.be/${info.youtube.id}`}
                 fontSize="xl"
+                target="_blank"
                 _hover={{ textDecoration: "underline" }}
               >
                 {timeFormat(new Date(info.youtube.uploaded_at).getTime())}
