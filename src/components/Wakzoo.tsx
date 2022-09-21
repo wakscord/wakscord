@@ -50,7 +50,7 @@ export default function Wakzoo({
         <PopoverBody>
           <Box>
             <Text fontWeight="bold">
-              최근 글 ({timeFormat(lastArticle.time * 1000)})
+              최근 글 ({timeFormat(lastArticle.time)})
             </Text>
             <Link
               href={`https://cafe.naver.com/steamindiegame/${lastArticle.idx}`}
@@ -63,7 +63,7 @@ export default function Wakzoo({
 
           <Box mt={2}>
             <Text fontWeight="bold">
-              최근 댓글 ({timeFormat(lastReply.time * 1000)})
+              최근 댓글 ({timeFormat(lastReply.time)})
             </Text>
             <Link
               href={`https://cafe.naver.com/steamindiegame/${lastReply.idx}`}
@@ -76,7 +76,7 @@ export default function Wakzoo({
 
           <Box mt={2}>
             <Text fontWeight="bold">
-              최근 좋아요 ({timeFormat(lastLike.time * 1000)})
+              최근 좋아요 ({timeFormat(lastLike.time)})
             </Text>
             <Link
               href={`https://cafe.naver.com/steamindiegame/${lastLike.idx}`}
