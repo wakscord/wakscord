@@ -88,8 +88,16 @@ export default function App() {
     }
 
     (async () => {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 7000);
+
       try {
-        const res = await fetch(API_BASE_URL + "/data");
+        const res = await fetch(API_BASE_URL + "/data", {
+          signal: controller.signal,
+        });
+
+        clearTimeout(timeoutId);
+
         const json = await res.json();
 
         setData({
