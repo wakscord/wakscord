@@ -12,7 +12,7 @@ export interface IDiscordEmbed {
 export interface IDiscordMessage {
   username: string;
   avatar_url: string;
-  content: string;
+  content?: string;
   embeds?: IDiscordEmbed[];
 }
 
