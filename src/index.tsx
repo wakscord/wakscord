@@ -3,10 +3,23 @@ import ReactDOM from "react-dom/client";
 import ReactGA from "react-ga4";
 import { ChakraProvider } from "@chakra-ui/react";
 
-import App from "./App";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import V1 from "./v1/App";
 
 ReactGA.initialize("G-9REMLTNZDT");
 ReactGA.send("pageview");
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <V1 />,
+  },
+  {
+    path: "/v2/*",
+    element: <div>Hello, World!</div>,
+  },
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -15,7 +28,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ChakraProvider>
-      <App />
+      <RouterProvider router={router} />
     </ChakraProvider>
   </React.StrictMode>
 );
