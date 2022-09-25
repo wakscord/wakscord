@@ -1,7 +1,10 @@
+import { Fragment } from "react";
+
 import styled, { css } from "styled-components";
 import moment from "moment";
 import "moment/locale/ko";
 
+import Emoji from "./Emoji";
 import Embed from "./Embed";
 import { IMessage } from "../../types";
 
@@ -10,8 +13,22 @@ interface IDiscordMessageProp {
   before: IMessage;
 }
 
+const emojiRegex = /(<a?:[a-zA-Z0-9]+:\d+>)/g;
+
 export default function Message({ message, before }: IDiscordMessageProp) {
   const isCompact = message.data.username === before?.data.username;
+
+  const content: Array<any> = [];
+
+  message.data.content?.split(emojiRegex).forEach((element) => {
+    const exec = emojiRegex.exec(element);
+
+    if (exec) {
+      content.push(<Emoji text={exec[1]} />);
+    } else {
+      content.push(<span>{element}</span>);
+    }
+  });
 
   return (
     <Container isCompact={isCompact}>
@@ -31,7 +48,10 @@ export default function Message({ message, before }: IDiscordMessageProp) {
       )}
 
       <Content>
-        {message.data.content}
+        {content.map((el, idx) => (
+          <Fragment key={idx}>{el}</Fragment>
+        ))}
+
         {message.data.embeds?.map((embed, idx) => (
           <Embed embed={embed} key={idx} />
         ))}
