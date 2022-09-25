@@ -7,6 +7,7 @@
     "@chakra-ui/react": "^2.0.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@skyra/discord-components-react": "^3.4.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -21,6 +22,7 @@
     "react-icons": "^4.4.0",
     "react-intersection-observer": "^9.2.0",
     "react-multi-select-component": "^4.2.7",
+    "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
