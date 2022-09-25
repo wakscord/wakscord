@@ -6,6 +6,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import V1 from "./v1/App";
+import V2 from "./v2/App";
 
 ReactGA.initialize("G-9REMLTNZDT");
 ReactGA.send("pageview");
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/v2/*",
-    element: <div>Hello, World!</div>,
+    element: <V2 />,
   },
 ]);
 
