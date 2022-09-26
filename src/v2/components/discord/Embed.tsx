@@ -2,6 +2,7 @@ import styled from "styled-components";
 import moment from "moment";
 import "moment/locale/ko";
 
+import Text from "./Text";
 import { IDiscordEmbed } from "../../types";
 
 interface IEmbedProp {
@@ -13,11 +14,19 @@ export default function Embed({ embed }: IEmbedProp) {
     <Container borderColor={embed.color}>
       {embed.author && <Author>{embed.author.name}</Author>}
       <Title>{embed.title}</Title>
-      {embed.description && <Description>{embed.description}</Description>}
+      {embed.description && (
+        <Description>
+          <Text>{embed.description}</Text>
+        </Description>
+      )}
       {embed.fields?.map((field, idx) => (
         <Field inline={field.inline} key={idx}>
-          <FieldName>{field.name}</FieldName>
-          <FieldValue>{field.value}</FieldValue>
+          <FieldName>
+            <Text>{field.name}</Text>
+          </FieldName>
+          <FieldValue>
+            <Text>{field.value}</Text>
+          </FieldValue>
         </Field>
       ))}
       {embed.image && <Image src={embed.image.url} />}
