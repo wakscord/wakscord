@@ -1,31 +1,45 @@
 import { Fragment } from "react";
 
-import styled from "styled-components";
-import Emoji from "./Emoji";
+import styled, { css } from "styled-components";
+import Emoji, { EmojiImage } from "./Emoji";
 
 interface ITextProp {
   children: string;
 }
 
-const emojiRegex = /(<a?:[a-zA-Z0-9]+:\d+>)/g;
+const formatRegex = /(<a?:[a-zA-Z0-9]+:\d+>)|(\*\*.+\*\*)|(:[a-zA-Z0-9_]+:)/g;
 
 export default function Text({ children }: ITextProp) {
   const content: Array<any> = [];
-  let isText = true;
+  let bigEmoji = true;
 
-  children.split(emojiRegex).forEach((element) => {
-    const exec = emojiRegex.exec(element);
+  // console.log(
+  //   children,
+  //   children.split(formatRegex).filter((x) => x)
+  // );
 
-    if (!exec) {
-      content.push(<span>{element}</span>);
-    } else {
-      isText = false;
-      content.push(<Emoji text={exec[1]} small={isText} />);
-    }
-  });
+  children
+    .split(formatRegex)
+    .filter((x) => x)
+    .forEach((element) => {
+      const exec =
+        /(<a?:[a-zA-Z0-9]+:\d+>)|(\*\*.+\*\*)|(:[a-zA-Z0-9_]+:)/g.exec(element);
+
+      if (!exec) {
+        content.push(<span>{element}</span>);
+
+        if (element !== " ") bigEmoji = false;
+      } else if (exec[1]) {
+        content.push(<Emoji text={exec[1]} />);
+      } else if (exec[2]) {
+        content.push(<strong>{element.slice(2, -2)}</strong>);
+      } else if (exec[3]) {
+        content.push(<span>emoji {element.slice(1, -1)}</span>);
+      }
+    });
 
   return (
-    <Content>
+    <Content small={!bigEmoji}>
       {content.map((el, idx) => (
         <Fragment key={idx}>{el}</Fragment>
       ))}
@@ -33,7 +47,16 @@ export default function Text({ children }: ITextProp) {
   );
 }
 
-const Content = styled.div`
+const Content = styled.div<{ small: boolean }>`
   color: white;
   font-weight: 300;
+
+  ${(props) =>
+    props.small &&
+    css`
+      ${EmojiImage} {
+        width: 22px !important;
+        height: 22px !important;
+      }
+    `}
 `;
