@@ -34,7 +34,7 @@ export default function Text({ children }: ITextProp) {
       } else if (exec[2]) {
         content.push(<strong>{element.slice(2, -2)}</strong>);
       } else if (exec[3]) {
-        content.push(<span>emoji {element.slice(1, -1)}</span>);
+        content.push(<Emoji text={element.slice(1, -1)} />);
       }
     });
 
