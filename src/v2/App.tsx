@@ -10,7 +10,7 @@ export default function App() {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        "https://api.isedol-cctv.xyz/messages/viichan"
+        "https://api.isedol-cctv.xyz/messages/viichan?before=10000"
       );
       const messages = await response.json();
       setMessages(messages);
@@ -22,8 +22,8 @@ export default function App() {
       <div
         style={{
           background: "#36393f",
-          width: "500px",
-          height: "500px",
+          // width: "500px",
+          height: "100vh",
           overflowY: "scroll",
         }}
       >
