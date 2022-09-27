@@ -1,7 +1,7 @@
-import { Fragment } from "react";
+import { Fragment } from 'react';
 
-import styled, { css } from "styled-components";
-import Emoji, { EmojiImage } from "./Emoji";
+import styled, { css } from 'styled-components';
+import Emoji, { EmojiImage } from './Emoji';
 
 interface ITextProp {
   children: string;
@@ -28,7 +28,7 @@ export default function Text({ children }: ITextProp) {
       if (!exec) {
         content.push(<span>{element}</span>);
 
-        if (element !== " ") bigEmoji = false;
+        if (element !== ' ') bigEmoji = false;
       } else if (exec[1]) {
         content.push(<Emoji text={exec[1]} />);
       } else if (exec[2]) {
@@ -49,14 +49,15 @@ export default function Text({ children }: ITextProp) {
 
 const Content = styled.div<{ small: boolean }>`
   color: white;
-  font-weight: 300;
+  font-size: 0.875rem;
 
   ${(props) =>
     props.small &&
     css`
       ${EmojiImage} {
-        width: 22px !important;
-        height: 22px !important;
+        width: 18px !important;
+        height: 18px !important;
+        margin-top: -3px;
       }
     `}
 `;
