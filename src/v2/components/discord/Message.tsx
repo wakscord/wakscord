@@ -48,13 +48,13 @@ const Container = styled.div<{ isCompact: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0 0 0 15px;
+  padding: 0 20px 0 15px;
 
   ${(props) =>
     !props.isCompact &&
     css`
       margin-top: 1.0625rem;
-      padding: 5px 0px 0 15px;
+      padding: 5px 20px 0 15px;
     `}
 
   &:hover {
