@@ -27,7 +27,11 @@ export default function Message({ message, before }: IDiscordMessageProp) {
           <Header>
             <Username>{message.data.username}</Username>
             <Info>
-              {moment(message.sended_at).calendar()} • {message.count}채널
+              {new Date().getTime() - new Date(message.sended_at).getTime() >
+              24 * 60 * 60 * 1000
+                ? moment(message.sended_at).format("yyyy.MM.DD.")
+                : moment(message.sended_at).calendar()}{" "}
+              • {message.count}채널
             </Info>
           </Header>
         </>
