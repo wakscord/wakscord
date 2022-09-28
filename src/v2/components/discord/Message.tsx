@@ -73,9 +73,9 @@ const HoverInfo = styled.div`
 
   width: 73px;
   height: 1.375rem;
-  line-height: 1.4rem;
+  line-height: 1.3rem;
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #b9bbbe;
 
   opacity: 0;
