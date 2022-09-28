@@ -1,3 +1,15 @@
+export enum EChannels {
+  ine = "ine",
+  jingburger = "jingburger",
+  lilpa = "lilpa",
+  jururu = "jururu",
+  gosegu = "gosegu",
+  viichan = "viichan",
+  woowakgood = "woowakgood",
+  chunyang = "chunyang",
+  roentgenium = "roentgenium",
+}
+
 export interface IDiscordEmbed {
   url: string;
   title: string;
