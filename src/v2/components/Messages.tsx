@@ -99,7 +99,6 @@ export default function Messages({ channel }: IMessagesProp) {
 const Container = styled.div`
   background: #36393f;
   overflow-y: scroll;
-  height: 100vh;
 `;
 
 const Observer = styled.div`
