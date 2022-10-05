@@ -100,9 +100,6 @@ const Avatar = styled.img`
 `;
 
 const Header = styled.div`
-  display: flex;
-  align-items: center;
-
   padding-left: 58px;
 `;
 
@@ -112,6 +109,8 @@ const Username = styled.span`
 `;
 
 const Info = styled.span`
+  vertical-align: text-top;
+
   color: #a3a6aa;
   font-size: 0.8rem;
   margin-left: 0.5rem;
