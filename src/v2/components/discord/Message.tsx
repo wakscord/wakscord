@@ -54,6 +54,8 @@ const Container = styled.div<{ isCompact: boolean }>`
   flex-direction: column;
   padding: 0 20px 0 15px;
 
+  background: #36393f;
+
   ${(props) =>
     !props.isCompact &&
     css`
