@@ -101,6 +101,31 @@ const Container = styled.div`
 
   background: #36393f;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #202225;
+    min-height: 40px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #2e3338;
+  }
+
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track {
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    border-radius: 8px;
+  }
 `;
 
 const Observer = styled.div`
