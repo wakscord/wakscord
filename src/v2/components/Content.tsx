@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import Messages from "./Messages";
 import Members from "./Members";
+import SubBox from "./SubBox";
 import Channel from "./discord/icons/Channel";
 
 import { EChannels } from "../types";
@@ -20,7 +21,11 @@ export default function Content({ channel }: IContentProp) {
         <h1>{channel}</h1>
       </Header>
       <ContentContainer>
-        <Messages channel={channel} />
+        <MessagesContainer>
+          <Messages channel={channel} />
+          <SubBox />
+        </MessagesContainer>
+
         <Members />
       </ContentContainer>
     </Container>
@@ -55,4 +60,9 @@ const ChannelIconWrapper = styled.div`
 const ContentContainer = styled.div`
   display: flex;
   overflow: hidden;
+`;
+
+const MessagesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
