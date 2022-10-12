@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element: <V1 />,
   },
   {
-    path: "/v2/*",
+    path: "/v2/channels/:channel",
     element: <V2 />,
   },
 ]);
