@@ -8,4 +8,5 @@ const Container = styled.div`
   background: #2f3136;
 
   width: 240px;
+  height: 100vh;
 `;
