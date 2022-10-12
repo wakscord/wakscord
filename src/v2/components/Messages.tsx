@@ -97,6 +97,8 @@ export default function Messages({ channel }: IMessagesProp) {
 }
 
 const Container = styled.div`
+  width: 100%;
+
   background: #36393f;
   overflow-y: scroll;
 `;
