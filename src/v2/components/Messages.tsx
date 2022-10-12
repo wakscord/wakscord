@@ -26,7 +26,7 @@ export default function Messages({ channel }: IMessagesProp) {
       if (entry.isIntersecting && isLoaded) {
         setIsLoaded(false);
         const response = await fetch(
-          `https://api.isedol-cctv.xyz/messages/${channel}?before=${
+          `https://api.wakscord.xyz/messages/${channel}?before=${
             before ? before : ""
           }`
         );
@@ -46,7 +46,7 @@ export default function Messages({ channel }: IMessagesProp) {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        `https://api.isedol-cctv.xyz/messages/${channel}`
+        `https://api.wakscord.xyz/messages/${channel}`
       );
 
       const msgs = await response.json();

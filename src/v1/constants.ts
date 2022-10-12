@@ -4,7 +4,7 @@ type stringIndex = {
   [index: string]: IUserData;
 };
 
-export const API_BASE_URL = "https://api.isedol-cctv.xyz";
+export const API_BASE_URL = "https://api.wakscord.xyz";
 
 export const ITEMS: stringIndex = {
   아이네: { id: "vo_ine", color: "#8a2be2" },
