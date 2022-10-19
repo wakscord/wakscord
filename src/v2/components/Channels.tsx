@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Members() {
+export default function Channels() {
   return <Container></Container>;
 }
 
