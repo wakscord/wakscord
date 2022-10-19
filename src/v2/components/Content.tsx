@@ -1,9 +1,11 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import Messages from "./Messages";
 import Members from "./Members";
 import SubBox from "./SubBox";
 import Channel from "./discord/icons/Channel";
+import MembersIcon from "./discord/icons/Members";
 
 import { EChannels } from "../types";
 
@@ -12,6 +14,8 @@ interface IContentProp {
 }
 
 export default function Content({ channel }: IContentProp) {
+  const [activeMembers, setActiveMembers] = useState(true);
+
   return (
     <Container>
       <Header>
@@ -19,6 +23,12 @@ export default function Content({ channel }: IContentProp) {
           <Channel />
         </ChannelIconWrapper>
         <h1>{channel}</h1>
+
+        <Buttons>
+          <div onClick={() => setActiveMembers(!activeMembers)}>
+            <MembersIcon active={activeMembers} />
+          </div>
+        </Buttons>
       </Header>
       <ContentContainer>
         <MessagesContainer>
@@ -26,7 +36,7 @@ export default function Content({ channel }: IContentProp) {
           <SubBox />
         </MessagesContainer>
 
-        <Members />
+        {activeMembers && <Members />}
       </ContentContainer>
     </Container>
   );
@@ -55,6 +65,11 @@ const Header = styled.div`
 
 const ChannelIconWrapper = styled.div`
   margin: 0 8px;
+`;
+
+const Buttons = styled.div`
+  margin-left: auto;
+  margin-right: 8px;
 `;
 
 const ContentContainer = styled.div`
