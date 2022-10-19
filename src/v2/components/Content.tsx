@@ -65,4 +65,6 @@ const ContentContainer = styled.div`
 const MessagesContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  width: 100%;
 `;
