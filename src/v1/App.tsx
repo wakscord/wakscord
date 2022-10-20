@@ -7,6 +7,14 @@ import {
   Divider,
   Text,
 } from "@chakra-ui/react";
+
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from "@chakra-ui/react";
+
 import { useEffect, useState } from "react";
 import "./css/App.css";
 
@@ -163,6 +171,23 @@ export default function App() {
                 />
               </Box>
             </Flex>
+
+            <Alert status="warning" mb="10">
+              <AlertIcon />
+              <Box>
+                <AlertTitle>왁스코드 오류 안내</AlertTitle>
+                <AlertDescription>
+                  최근 왁스코드 구독자가 많아짐에 따라 전송 지연이 과도하게
+                  일어나면서 보내지지 않거나 오래된 알림이 늦게서야 도착하는
+                  문제가 많이 발생하고 있습니다. 이 점에 대하여 양해
+                  부탁드립니다.
+                  <br />
+                  <Link href="https://cafe.naver.com/steamindiegame/7876416">
+                    왁스코드 서버 지원 받습니다
+                  </Link>
+                </AlertDescription>
+              </Box>
+            </Alert>
 
             {Object.entries(ITEMS).map((item, index) => (
               <Card
