@@ -172,23 +172,6 @@ export default function App() {
               </Box>
             </Flex>
 
-            <Alert status="warning" mb="10">
-              <AlertIcon />
-              <Box>
-                <AlertTitle>왁스코드 오류 안내</AlertTitle>
-                <AlertDescription>
-                  최근 왁스코드 구독자가 많아짐에 따라 전송 지연이 과도하게
-                  일어나면서 보내지지 않거나 오래된 알림이 늦게서야 도착하는
-                  문제가 많이 발생하고 있습니다. 이 점에 대하여 양해
-                  부탁드립니다.
-                  <br />
-                  <Link href="https://cafe.naver.com/steamindiegame/7876416">
-                    왁스코드 서버 지원 받습니다
-                  </Link>
-                </AlertDescription>
-              </Box>
-            </Alert>
-
             {Object.entries(ITEMS).map((item, index) => (
               <Card
                 key={index}
@@ -200,6 +183,20 @@ export default function App() {
                 bangon={data.bangon.members[item[0]]}
               />
             ))}
+
+            <Alert status="info" mb="10">
+              <AlertIcon />
+              <Box>
+                <AlertTitle>왁스코드 서버를 지원 받습니다</AlertTitle>
+                <AlertDescription>
+                  최근 많아지는 채널 수로 인해 웹후크 전송 노드 서버를 지원 받고
+                  있습니다.{" "}
+                  <Link href="https://cafe.naver.com/steamindiegame/7876416">
+                    (왁물원 글 링크)
+                  </Link>
+                </AlertDescription>
+              </Box>
+            </Alert>
 
             <Divider />
           </div>
