@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-export default function Channel() {
+interface IIconProps {
+  size?: number;
+}
+
+export default function Channel({ size }: IIconProps) {
   return (
-    <Icon width="24" height="24" viewBox="0 0 24 24" x="0" y="0">
+    <Icon width="24" height="24" viewBox="0 0 24 24" x="0" y="0" size={size}>
       <path
         fill="currentColor"
         fill-rule="evenodd"
@@ -15,8 +19,14 @@ export default function Channel() {
 
 const Icon = styled.svg`
   display: block;
-  width: 24px;
-  height: 24px;
   -webkit-app-region: no-drag;
   color: #8e9297;
+
+  ${({ size }: IIconProps) =>
+    size
+      ? `width: ${size}px; height: ${size}px;`
+      : `
+    width: 24px;
+    height: 24px;
+  `}
 `;
