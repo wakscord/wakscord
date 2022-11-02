@@ -34,3 +34,9 @@ export interface IMessage {
   count: number;
   sended_at: string;
 }
+
+export enum EStatus {
+  STREAMING = "streaming",
+  ONLINE = "chat",
+  OFFLINE = "offline",
+}
