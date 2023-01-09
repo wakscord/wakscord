@@ -1,30 +1,30 @@
 import {
   Box,
-  Image,
   Button,
-  Flex,
-  useDisclosure,
   Divider,
+  Flex,
+  Image,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import {
   Alert,
+  AlertDescription,
   AlertIcon,
   AlertTitle,
-  AlertDescription,
 } from "@chakra-ui/react";
 
 import { useEffect, useState } from "react";
 import "./css/App.css";
 
+import { WarningTwoIcon } from "@chakra-ui/icons";
 import ReactGA from "react-ga4";
 import Card from "./components/Card";
-import ClickText from "./components/ClickText";
-import Link from "./components/Link";
-import DiscordModal from "./components/DiscordModal";
 import ChatConfig from "./components/ChatConfig";
-import { WarningTwoIcon } from "@chakra-ui/icons";
+import ClickText from "./components/ClickText";
+import DiscordModal from "./components/DiscordModal";
+import Link from "./components/Link";
 import { API_BASE_URL, ITEMS } from "./constants";
 import { Data } from "./types";
 
@@ -209,13 +209,16 @@ export default function App() {
               alignItems="center"
               gap={2}
             >
-              <Text mb={3}>{count}개의 웹후크가 정보를 받아보는 중</Text>
+              <Text>{count}개의 웹후크가 정보를 받아보는 중</Text>
               <ClickText onClick={cOnOpen}>채팅 설정</ClickText>
               <ChatConfig
                 isOpen={cIsOpen}
                 onOpen={cOnOpen}
                 onClose={cOnClose}
               />
+
+              <Box mb={3} />
+              <Text>=== Reference ===</Text>
 
               <Link
                 href={`https://cafe.naver.com/steamindiegame/${data.bangon.info.idx}`}
@@ -226,6 +229,10 @@ export default function App() {
                 세구세구체
               </Link>
               <Link href="https://github.com/minibox24/wakscord">깃허브</Link>
+
+              <Box mb={3} />
+              <Text>=== Support ===</Text>
+              <Text>minibox724@gmail.com</Text>
               <Link href="https://discord.gg/pbd2xXJ">
                 디스코드 서포트 서버
               </Link>
