@@ -1,27 +1,27 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import {
-  Box,
   Avatar,
   AvatarBadge,
+  Box,
+  Collapse,
+  Divider,
   Flex,
   Heading,
-  Text,
-  Divider,
-  Collapse,
-  Spinner,
   Link,
+  Spinner,
+  Text,
 } from "@chakra-ui/react";
 
 import {
-  Icon,
-  ChevronUpIcon,
-  ChevronDownIcon,
-  ViewIcon,
-  TimeIcon,
   CalendarIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
   EditIcon,
+  Icon,
+  TimeIcon,
+  ViewIcon,
 } from "@chakra-ui/icons";
 
 import { IoCafe, IoLogoYoutube } from "react-icons/io5";
@@ -29,20 +29,20 @@ import { IoCafe, IoLogoYoutube } from "react-icons/io5";
 import "../css/Card.css";
 
 import ReactGA from "react-ga4";
-import Chat from "./Chat";
 import Bangon from "./Bangon";
+import Chat from "./Chat";
 import Tooltip from "./Tooltip";
 
-import { timeFormat, uptimeFormat, addAlpha } from "../utils";
 import { API_BASE_URL, ITEMS } from "../constants";
 import {
-  IUserData,
-  IInfo,
-  IWatchMember,
   IBangonMember,
   IChat,
+  IInfo,
+  IUserData,
   IWakzoo,
+  IWatchMember,
 } from "../types";
+import { addAlpha, timeFormat, uptimeFormat } from "../utils";
 
 import Wakzoo from "./Wakzoo";
 
@@ -67,7 +67,7 @@ export default function Card({
   const [chats, setChats] = useState<Array<IChat>>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [chatLoaded, setChatLoaded] = useState<boolean>(false);
-  // const [chatEnd, setChatEnd] = useState<boolean>(false);
+  const [chatEnd, setChatEnd] = useState<boolean>(false);
   const [height, setHeight] = useState<number>(0);
 
   const chatBox = useRef<HTMLDivElement>(null);
@@ -93,12 +93,14 @@ export default function Card({
         if (!chats[0]) return;
 
         const res = await fetch(
-          `${API_BASE_URL}/chats?m=${name}&s=${chats[0].id}&e=${getExcludes()}`
+          `${API_BASE_URL}/chats?m=${name}&s=${
+            chats.length
+          }&l=50&e=${getExcludes()}`
         );
         const data = await res.json();
 
-        if (data[name].length === 0 || data[name][0].id === chats[0].id) {
-          // setChatEnd(true);
+        if (data[name].length === 0) {
+          setChatEnd(true);
           return;
         }
 
@@ -124,7 +126,7 @@ export default function Card({
 
       (async () => {
         const res = await fetch(
-          `${API_BASE_URL}/chats?m=${name}&e=${getExcludes()}`
+          `${API_BASE_URL}/chats?m=${name}&l=50&e=${getExcludes()}`
         );
         const data = await res.json();
 
@@ -372,11 +374,12 @@ export default function Card({
             bg="rgba(255 255 255 / 20%)"
             borderRadius="10px"
           >
-            {false && (
-              <Flex justifyContent="center" margin={5} ref={ref}>
-                <Spinner color="black" />
-              </Flex>
-            )}
+            {chatEnd ||
+              (chats && (
+                <Flex justifyContent="center" margin={5} ref={ref}>
+                  <Spinner color="black" />
+                </Flex>
+              ))}
 
             {chats &&
               chats.map((chat: IChat, idx: number) => (
