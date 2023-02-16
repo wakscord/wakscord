@@ -1,34 +1,34 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import {
+  Button,
+  Collapse,
+  Divider,
+  Flex,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Button,
-  Input,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Text,
-  Divider,
-  useToast,
-  Collapse,
   useDisclosure,
-  Flex,
+  useToast,
 } from "@chakra-ui/react";
 
-import { Icon, ChevronUpIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, ChevronUpIcon, Icon } from "@chakra-ui/icons";
 
-import HowToMakeWebhook from "./HowToMakeWebhook";
-import ClickText from "./ClickText";
-import Option, { Data } from "./Option";
 import { API_BASE_URL, ITEMS } from "../constants";
+import HowToMakeWebhook from "./HowToMakeWebhook";
+import Option, { Data } from "./Option";
 
 import ReactGA from "react-ga4";
+import Link from "./Link";
 
 const webhookRegex =
   /discord(?:app)?.com\/api\/webhooks\/([0-9]{17,20})\/([A-Za-z0-9.\-_]{60,68})/;
@@ -368,18 +368,9 @@ export default function DiscordModal({
             {isError && (
               <FormErrorMessage flexDirection="column" alignItems="flex-start">
                 <Text>올바른 디스코드 웹후크 URL을 입력해주세요.</Text>
-                <ClickText
-                  onClick={() => {
-                    ReactGA.event({
-                      category: "만드는법",
-                      action: "만드는법",
-                    });
-
-                    hOnOpen();
-                  }}
-                >
+                <Link href="https://cafe.naver.com/steamindiegame/6533578">
                   웹후크 만드는 법
-                </ClickText>
+                </Link>
                 <HowToMakeWebhook
                   onClose={hOnClose}
                   isOpen={hIsOpen}
