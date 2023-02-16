@@ -96,11 +96,13 @@ export default function App() {
     }
 
     (async () => {
+      const dataRoute = params.get("data") || "/data";
+
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 7000);
 
       try {
-        const res = await fetch(API_BASE_URL + "/data", {
+        const res = await fetch(API_BASE_URL + dataRoute, {
           signal: controller.signal,
         });
 
