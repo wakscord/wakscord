@@ -37,6 +37,8 @@ export default function App() {
       info: {
         idx: "",
         date: "",
+        wakIdx: "",
+        wakDate: "",
         comment: [],
       },
       members: {},
