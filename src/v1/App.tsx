@@ -228,6 +228,11 @@ export default function App() {
               >
                 [{data.bangon.info.date}] 이세돌 뱅온정보
               </Link>
+              <Link
+                href={`https://cafe.naver.com/steamindiegame/${data.bangon.info.wakIdx}`}
+              >
+                [{data.bangon.info.wakDate}] 왁피스 일기장
+              </Link>
               <Link href="https://github.com/JellyBrick/SeguFont">
                 세구세구체
               </Link>

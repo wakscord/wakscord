@@ -50,7 +50,13 @@ export interface IBangonMember {
 }
 
 export interface IBangon {
-  info: { idx: string; date: string; comment: string[] };
+  info: {
+    idx: string;
+    date: string;
+    wakIdx: string;
+    wakDate: string;
+    comment: string[];
+  };
   members: { [name: string]: IBangonMember };
 }
 
