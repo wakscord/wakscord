@@ -142,23 +142,6 @@ export default function App() {
       {data.loaded ? (
         <>
           <div className="content">
-            <Alert status="info" mb="10">
-              <AlertIcon />
-              <Box>
-                <AlertTitle>왁스코드 서버를 지원 받습니다</AlertTitle>
-                <AlertDescription>
-                  최근 많아지는 채널 수로 인해 웹후크 전송 노드 서버를 지원 받고
-                  있습니다.{" "}
-                  <Link href="https://cafe.naver.com/steamindiegame/7876416">
-                    (왁물원 글 링크)
-                  </Link>
-                  <br />
-                  <br />
-                  (상시 지원 받는 중입니다!! 많관부)
-                </AlertDescription>
-              </Box>
-            </Alert>
-
             <Flex justifyContent="center" alignItems="center">
               <Box margin={10} mb={20} textAlign="center" maxW="600px">
                 <Flex flexDirection="column">
@@ -193,6 +176,23 @@ export default function App() {
                 />
               </Box>
             </Flex>
+
+            <Alert status="info" mb="10">
+              <AlertIcon />
+              <Box>
+                <AlertTitle>왁스코드 서버를 지원 받습니다</AlertTitle>
+                <AlertDescription>
+                  최근 많아지는 채널 수로 인해 웹후크 전송 노드 서버를 지원 받고
+                  있습니다.{" "}
+                  <Link href="https://cafe.naver.com/steamindiegame/7876416">
+                    (왁물원 글 링크)
+                  </Link>
+                  <br />
+                  <br />
+                  (상시 지원 받는 중입니다!! 많관부)
+                </AlertDescription>
+              </Box>
+            </Alert>
 
             {Object.entries(ITEMS).map((item, index) => (
               <Card
