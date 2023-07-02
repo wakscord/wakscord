@@ -177,19 +177,13 @@ export default function App() {
               </Box>
             </Flex>
 
-            <Alert status="info" mb="10">
+            <Alert status="error" mb="10">
               <AlertIcon />
               <Box>
-                <AlertTitle>왁스코드 서버를 지원 받습니다</AlertTitle>
+                <AlertTitle>왁스코드가 아파요</AlertTitle>
                 <AlertDescription>
-                  최근 많아지는 채널 수로 인해 웹후크 전송 노드 서버를 지원 받고
-                  있습니다.{" "}
-                  <Link href="https://cafe.naver.com/steamindiegame/7876416">
-                    (왁물원 글 링크)
-                  </Link>
-                  <br />
-                  <br />
-                  (상시 지원 받는 중입니다!! 많관부)
+                  현재 왁스코드에 큰 문제가 생겨 디스코드로 오는 메시지가 매우
+                  느리게 오거나, 아예 오지 않습니다. 불편을 드려 사과드립니다.
                 </AlertDescription>
               </Box>
             </Alert>
