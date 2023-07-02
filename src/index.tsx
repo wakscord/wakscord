@@ -1,7 +1,7 @@
+import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import ReactGA from "react-ga4";
-import { ChakraProvider } from "@chakra-ui/react";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -15,6 +15,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <V1 />,
+    errorElement: (
+      <div>
+        초비ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ상!!!!!!!!!!!!!!! (대충 오류 발생했다는
+        소리)
+      </div>
+    ),
   },
   {
     path: "/v2/channels/:channel",
