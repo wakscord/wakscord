@@ -239,7 +239,7 @@ export default function App() {
 
               <Box mb={3} />
               <Text>=== Support ===</Text>
-              <Text>minibox724@gmail.com</Text>
+              <Text>contact@wakscord.xyz</Text>
               <Link href="https://discord.gg/pbd2xXJ">
                 디스코드 서포트 서버
               </Link>
