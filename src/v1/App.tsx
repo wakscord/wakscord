@@ -183,7 +183,12 @@ export default function App() {
                 <AlertTitle>왁스코드가 아파요</AlertTitle>
                 <AlertDescription>
                   현재 왁스코드에 큰 문제가 생겨 디스코드로 오는 메시지가 매우
-                  느리게 오거나, 아예 오지 않습니다. 불편을 드려 사과드립니다.
+                  느리게 오거나, 아예 오지 않게 돠는 문제가 발생중입니다. 불편을
+                  드려 사과드립니다.
+                  <br />
+                  <br />
+                  문제가 해결되기 전까지는 왁스코드 사이트 또는 각 스트리머의
+                  트위치에서 내용들을 확인해주세요.
                 </AlertDescription>
               </Box>
             </Alert>
