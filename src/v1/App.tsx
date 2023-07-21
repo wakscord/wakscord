@@ -180,6 +180,19 @@ export default function App() {
             <Alert status="error" mb="10">
               <AlertIcon />
               <Box>
+                <AlertTitle>왁스코드가 미친 진짜 쥰내 아파요</AlertTitle>
+                <AlertDescription>
+                  사실 왁스코드가 아픈게 아니고 개발자인 제가 아픈거였답니다~{" "}
+                  <Link href="https://cafe.naver.com/steamindiegame/12135226">
+                    (왁물원 사과문 링크)
+                  </Link>
+                </AlertDescription>
+              </Box>
+            </Alert>
+
+            <Alert status="error" mb="10">
+              <AlertIcon />
+              <Box>
                 <AlertTitle>왁스코드가 아파요</AlertTitle>
                 <AlertDescription>
                   현재 왁스코드에 큰 문제가 생겨 디스코드로 오는 메시지가 매우
