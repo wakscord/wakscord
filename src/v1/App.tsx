@@ -177,31 +177,18 @@ export default function App() {
               </Box>
             </Flex>
 
-            <Alert status="error" mb="10">
+            <Alert status="info" mb="10">
               <AlertIcon />
               <Box>
-                <AlertTitle>왁스코드가 미친 진짜 쥰내 아파요</AlertTitle>
+                <AlertTitle>
+                  왁스코드에서 UI/UX 디자이너를 모집합니다!
+                </AlertTitle>
                 <AlertDescription>
-                  사실 왁스코드가 아픈게 아니고 개발자인 제가 아픈거였답니다~{" "}
-                  <Link href="https://cafe.naver.com/steamindiegame/12135226">
-                    (왁물원 사과문 링크)
+                  슬슬 구린 디자인에서 벗어나 새로운 뉴-왁스코드를 위해서 UI/UX
+                  디자이너를 모집하고 있습니다. 많은 관심 부탁드립니다!{" "}
+                  <Link href="https://cafe.naver.com/steamindiegame/12229356">
+                    (모집 공고 링크)
                   </Link>
-                </AlertDescription>
-              </Box>
-            </Alert>
-
-            <Alert status="error" mb="10">
-              <AlertIcon />
-              <Box>
-                <AlertTitle>왁스코드가 아파요</AlertTitle>
-                <AlertDescription>
-                  현재 왁스코드에 큰 문제가 생겨 디스코드로 오는 메시지가 매우
-                  느리게 오거나, 아예 오지 않게 돠는 문제가 발생중입니다. 불편을
-                  드려 사과드립니다.
-                  <br />
-                  <br />
-                  문제가 해결되기 전까지는 왁스코드 사이트 또는 각 스트리머의
-                  트위치에서 내용들을 확인해주세요.
                 </AlertDescription>
               </Box>
             </Alert>
