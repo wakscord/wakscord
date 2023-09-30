@@ -180,9 +180,7 @@ export default function App() {
             <Alert status="info" mb="10">
               <AlertIcon />
               <Box>
-                <AlertTitle>
-                  왁스코드에서 UI/UX 디자이너를 모집합니다!
-                </AlertTitle>
+                <AlertTitle>왁스코드 설문조사</AlertTitle>
                 <AlertDescription>
                   왁스코드가 릴리즈하고 1년이 넘게 지난 지금, 여러분들께
                   여쭈어보고 싶은 게 있어 설문조사를 진행해보려고 합니다. 꼭
