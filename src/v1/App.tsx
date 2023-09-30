@@ -184,10 +184,11 @@ export default function App() {
                   왁스코드에서 UI/UX 디자이너를 모집합니다!
                 </AlertTitle>
                 <AlertDescription>
-                  슬슬 구린 디자인에서 벗어나 새로운 뉴-왁스코드를 위해서 UI/UX
-                  디자이너를 모집하고 있습니다. 많은 관심 부탁드립니다!{" "}
-                  <Link href="https://cafe.naver.com/steamindiegame/12229356">
-                    (모집 공고 링크)
+                  왁스코드가 릴리즈하고 1년이 넘게 지난 지금, 여러분들께
+                  여쭈어보고 싶은 게 있어 설문조사를 진행해보려고 합니다. 꼭
+                  참여해주세요!!{" "}
+                  <Link href="https://forms.gle/Qij26YcoymCcN2pY9">
+                    (설문조사 링크)
                   </Link>
                 </AlertDescription>
               </Box>
