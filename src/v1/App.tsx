@@ -177,6 +177,11 @@ export default function App() {
               </Box>
             </Flex>
 
+            <a
+              href="https://cafe.naver.com/steamindiegame/14770951"
+              target="_blank"
+              rel="noreferrer"
+            >
             <img
               src="https://cdn.wakscord.xyz/etc/NewWakscord.png"
               alt="NewWakscord"
@@ -185,6 +190,7 @@ export default function App() {
                 filter: "drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.5))",
               }}
             />
+            </a>
 
             {Object.entries(ITEMS).map((item, index) => (
               <Card
