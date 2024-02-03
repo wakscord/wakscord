@@ -177,20 +177,14 @@ export default function App() {
               </Box>
             </Flex>
 
-            <Alert status="info" mb="10">
-              <AlertIcon />
-              <Box>
-                <AlertTitle>왁스코드 설문조사</AlertTitle>
-                <AlertDescription>
-                  왁스코드가 릴리즈하고 1년이 넘게 지난 지금, 여러분들께
-                  여쭈어보고 싶은 게 있어 설문조사를 진행해보려고 합니다. 꼭
-                  참여해주세요!!{" "}
-                  <Link href="https://forms.gle/Qij26YcoymCcN2pY9">
-                    (설문조사 링크)
-                  </Link>
-                </AlertDescription>
-              </Box>
-            </Alert>
+            <img
+              src="https://cdn.wakscord.xyz/etc/NewWakscord.png"
+              alt="NewWakscord"
+              style={{
+                marginBottom: "100px",
+                filter: "drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.5))",
+              }}
+            />
 
             {Object.entries(ITEMS).map((item, index) => (
               <Card
